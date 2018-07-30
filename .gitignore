@@ -10,7 +10,7 @@
 /build
 
 # API key information
-/src/ApiKey.js
+../src/ApiKey.js
 
 # misc
 .DS_Store
