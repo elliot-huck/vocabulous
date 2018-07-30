@@ -1,5 +1,11 @@
 {
-  "users": [],
+  "users": [
+    {
+      "userName": "elliot",
+      "password": "test",
+      "id": 1
+    }
+  ],
   "words": [],
   "quizzes": [],
   "userWords": [],

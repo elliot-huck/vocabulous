@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import { Field, Label, Control, Input } from "bloomer"
-import { Button } from "../../node_modules/bloomer/lib/elements/Button";
+import { Field, Label, Control, Input, Button } from "bloomer"
+// import {  } from "../../node_modules/bloomer/lib/elements/Button";
+import LocalApi from "../Api/LocalApi"
 
 export default class Login extends Component {
 
@@ -22,6 +23,11 @@ export default class Login extends Component {
 			password: this.state.passwordInput
 		}
 		console.log("New User:", newUser);
+		LocalApi.addUser(newUser).then( response => {
+			console.log("User added!")
+		}
+
+		)
 	}
 
 	render() {
@@ -30,7 +36,7 @@ export default class Login extends Component {
 				<Field isGrouped>
 					<Label>User name:</Label>
 					<Control>
-						<Input type="text" id="userNameInput"
+						<Input required type="text" id="userNameInput"
 							onChange={(evt) => { this.handleChange(evt) }}></Input>
 					</Control>
 				</Field>
@@ -38,7 +44,7 @@ export default class Login extends Component {
 				<Field isGrouped>
 					<Label>Password:</Label>
 					<Control>
-						<Input type="password" id="passwordInput"
+						<Input required type="password" id="passwordInput"
 							onChange={(evt) => { this.handleChange(evt) }}></Input>
 					</Control>
 				</Field>
