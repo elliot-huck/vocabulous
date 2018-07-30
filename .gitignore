@@ -9,8 +9,9 @@
 # production
 /build
 
-# API key information
+# API information
 # /src/ApiKey.js
+
 
 # misc
 .DS_Store
