@@ -3,29 +3,52 @@ import { Field, Label, Control, Input } from "bloomer"
 import { Button } from "../../node_modules/bloomer/lib/elements/Button";
 
 export default class Login extends Component {
-  render() {
-    return (
-      <form>
-        <Field isGrouped>
-          <Label>User name:</Label>
-          <Control>
-            <Input type="text"></Input>
-          </Control>
-        </Field>
 
-        <Field isGrouped>
-          <Label>Password:</Label>
-          <Control>
-            <Input type="password"></Input>
-          </Control>
-        </Field>
+	state = {
+		userNameInput: "",
+		passwordInput: ""
+	}
 
-      <Field isGrouped>
-        <Button>Log in</Button>
-        <Button>Register</Button>
-      </Field>
+	handleChange = (evt) => {
+		const stateToChange = {};
+		stateToChange[evt.target.id] = evt.target.value;
+		this.setState(stateToChange);
+	}
 
-      </form>
-    )
-  }
+	registerUser = () => {
+		console.log("Registering user...");
+		const newUser = {
+			userName: this.state.userNameInput,
+			password: this.state.passwordInput
+		}
+		console.log("New User:", newUser);
+	}
+
+	render() {
+		return (
+			<form>
+				<Field isGrouped>
+					<Label>User name:</Label>
+					<Control>
+						<Input type="text" id="userNameInput"
+							onChange={(evt) => { this.handleChange(evt) }}></Input>
+					</Control>
+				</Field>
+
+				<Field isGrouped>
+					<Label>Password:</Label>
+					<Control>
+						<Input type="password" id="passwordInput"
+							onChange={(evt) => { this.handleChange(evt) }}></Input>
+					</Control>
+				</Field>
+
+				<Field isGrouped>
+					<Button>Log in</Button>
+					<Button onClick={this.registerUser}>Register</Button>
+				</Field>
+
+			</form>
+		)
+	}
 }
