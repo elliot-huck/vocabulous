@@ -7,7 +7,7 @@ export default class Login extends Component {
     return (
       <article>
         <TitleCard />
-        <LoginForm />
+        <LoginForm logMeIn={this.props.logIn} />
       </article>
     )
   }
