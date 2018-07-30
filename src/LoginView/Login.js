@@ -1,10 +1,14 @@
 import React, { Component } from "react"
-import {Title} from "bloomer"
+import TitleCard from "./TitleCard";
+import LoginForm from "./LoginForm";
 
 export default class Login extends Component {
   render() {
-    return(
-      <Title>Vocabulous</Title>
+    return (
+      <article>
+        <TitleCard />
+        <LoginForm />
+      </article>
     )
   }
 }
