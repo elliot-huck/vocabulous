@@ -6,8 +6,31 @@
       "id": 1
     }
   ],
-  "words": [],
+  "words": [
+    {
+      "word": "test",
+      "partOfSpeech": "noun",
+      "definition": "trying something to find out about it",
+      "sentence": "This is only a test.",
+      "wordFrequency": 4.9,
+      "id": 1
+    },
+    {
+      "word": "example",
+      "partOfSpeech": "noun",
+      "definition": "a representative form or pattern",
+      "sentence": "This is an example of a sentence.",
+      "wordFrequency": 4.67,
+      "id": 2
+    }
+  ],
   "quizzes": [],
-  "userWords": [],
+  "userWords": [
+    {
+      "userId": 1,
+      "wordId": 1,
+      "quizFrequency": 1
+    }
+  ],
   "userQuizzes": []
 }
