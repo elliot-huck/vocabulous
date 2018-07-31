@@ -2,14 +2,12 @@
 
 import React, { Component } from "react"
 import TitleCard from "../LoginView/TitleCard";
+import HeaderBar from "./HeaderBar"
 
-export default class Login extends Component {
+export default class Main extends Component {
   render() {
     return (
-      <article>
-        <h1>Welcome to...</h1>
-        <TitleCard />
-      </article>
+        <HeaderBar isFullWidth />
     )
   }
 }
