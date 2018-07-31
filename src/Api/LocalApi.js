@@ -19,7 +19,15 @@ const LocalApi = Object.create(null, {
       return fetch(`http://localhost:5050/users?userName=${userInput}`)
         .then(e => e.json())
     }
+  },
+
+  getUserWords: {
+    value: (activeUser) => {
+      return fetch(`http://localhost:5050/userWords?userId=${activeUser}&_expand=word`)
+        .then(e => e.json())
+    }
   }
+
 });
 
 export default LocalApi
