@@ -1,7 +1,8 @@
 // This module renders the nav bar that appears under/inside the header bar at the top of every page
 
 import React, { Component } from "react"
-import {Tabs, TabList, Tab, TabLink, Icon} from "bloomer"
+import { Link } from "react-router-dom"
+import { Tabs, TabList, Tab, TabLink, Icon } from "bloomer"
 
 export default class NavBar extends Component {
 
@@ -11,21 +12,15 @@ export default class NavBar extends Component {
         <TabList>
 
           <Tab>
-            <TabLink>
-              <span>Add</span>
-            </TabLink>
+            <Link to="/browse">Browse</Link>
           </Tab>
 
           <Tab>
-            <TabLink>
-              <span>List</span>
-            </TabLink>
+            <Link to="/list">List</Link>
           </Tab>
 
           <Tab>
-            <TabLink>
-              <span>Quiz</span>
-            </TabLink>
+            <Link to="/quiz">Quiz</Link>
           </Tab>
 
         </TabList>
