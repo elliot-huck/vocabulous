@@ -5,10 +5,9 @@ import {Tabs, TabList, Tab, TabLink, Icon} from "bloomer"
 
 export default class NavBar extends Component {
 
-
   render() {
     return (
-      <Tabs isFullWidth>
+      <Tabs isBoxed isFullWidth>
         <TabList>
 
           <Tab>
