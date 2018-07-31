@@ -1,3 +1,4 @@
+// This module exports the API key to the ExternalApi module
 
 const Api = Object.create(null, {
   key: {
