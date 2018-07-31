@@ -3,7 +3,9 @@
 import React, { Component } from "react"
 import {Tabs, TabList, Tab, TabLink, Icon} from "bloomer"
 
-export default class HeaderBar extends Component {
+export default class NavBar extends Component {
+
+
   render() {
     return (
       <Tabs isFullWidth>
@@ -15,7 +17,7 @@ export default class HeaderBar extends Component {
             </TabLink>
           </Tab>
 
-          <Tab isActive>
+          <Tab>
             <TabLink>
               <span>List</span>
             </TabLink>
