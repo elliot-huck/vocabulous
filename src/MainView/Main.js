@@ -1,15 +1,14 @@
-// This module renders the login view of the page
+// This module renders the main view of the page after a user has logged in
 
 import React, { Component } from "react"
-import TitleCard from "./TitleCard";
-import LoginForm from "./LoginForm";
+import TitleCard from "../LoginView/TitleCard";
 
 export default class Login extends Component {
   render() {
     return (
       <article>
+        <h1>Welcome to...</h1>
         <TitleCard />
-        <LoginForm logMeIn={this.props.logIn} />
       </article>
     )
   }

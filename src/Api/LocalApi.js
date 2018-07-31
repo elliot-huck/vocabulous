@@ -1,4 +1,4 @@
-import { Table } from "../../node_modules/bloomer/lib/elements/Table";
+// This module exports an object that holds all the methods used to query the local API for my app
 
 const LocalApi = Object.create(null, {
 

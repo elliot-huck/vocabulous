@@ -1,6 +1,7 @@
+// This module renders the login form section of the main login view
+
 import React, { Component } from "react"
 import { Field, Label, Control, Input, Button } from "bloomer"
-// import {  } from "../../node_modules/bloomer/lib/elements/Button";
 import LocalApi from "../Api/LocalApi"
 
 export default class Login extends Component {
@@ -10,19 +11,24 @@ export default class Login extends Component {
 		passwordInput: ""
 	}
 
+	// Updates state as input typed into either field
 	handleChange = (evt) => {
 		const stateToChange = {};
 		stateToChange[evt.target.id] = evt.target.value;
 		this.setState(stateToChange);
 	}
 
+	// Runs when the "Log in" button is clicked
 	handleLogIn = () => {
+		// Checks if the user name exists
 		LocalApi.searchUsers(this.state.userNameInput)
 			.then(response => {
 				const validUser = (response.length !== 0);
 				if (validUser) {
+					// Checks if the password matches the name
 					const passwordMatch = (response[0].password === this.state.passwordInput);
 					if (passwordMatch) {
+						// Calls the logIn function passed from App.js, passing it the id of the matched user
 						const userId = response[0].id;
 						this.props.logMeIn(userId);
 					} else {
@@ -35,22 +41,23 @@ export default class Login extends Component {
 
 	}
 
+	// Runs when the "Register" is clicked (or the form is submitted)
 	registerUser = (evt) => {
 		evt.preventDefault();
-		console.log("registering")
+		// Checks if the username is unique
 		LocalApi.searchUsers(this.state.userNameInput)
 			.then(response => {
 				const userNameAvailable = (response.length === 0);
 				if (userNameAvailable) {
-					console.log("Registering user...");
+					// Creates a newUser object and POSTs it to the database
 					const newUser = {
 						userName: this.state.userNameInput,
 						password: this.state.passwordInput
 					}
-					console.log("New User:", newUser);
 					LocalApi.addUser(newUser)
 						.then(response => {
-							console.log("User added!")
+							// Calls the logIn function passed from App.js, passing it the id of the newly created user
+							this.props.logMeIn(response.id);
 						});
 				} else {
 					alert("Sorry, that user name is already taken")
@@ -62,6 +69,7 @@ export default class Login extends Component {
 	render() {
 		return (
 			<form onSubmit={(evt) => { this.registerUser(evt) }}>
+			
 				<Field isGrouped>
 					<Label>User name:</Label>
 					<Control>
