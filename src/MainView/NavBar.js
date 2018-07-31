@@ -1,4 +1,4 @@
-// This module renders the nav bar that appears under/inside the header bar at the top of every page
+// This module renders the nav bar that appears under/inside the header bar at the top of every page. The Link elements route to the three main views using the matching Routes in Main.js
 
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
