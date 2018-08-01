@@ -12,10 +12,10 @@ export default class List extends Component {
 
   render() {
     return (
-      <div className="columns">
+      <main className="columns">
         <ListSideBar />
         <ListPane />
-      </div>
+      </main>
     )
   }
 }
