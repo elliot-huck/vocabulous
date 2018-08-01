@@ -22,12 +22,14 @@ export default class ListPane extends Component {
       });
   }
 
+
+
   render() {
     return (
       <Box className={"column is-three-quarters"}>
         <h3>Word list</h3>
         {this.state.userWordList.map(singleWord => {
-          return <ListCard key={singleWord.id} wordObject={singleWord} />
+          return <ListCard key={singleWord.id} wordObject={singleWord} showDetails={this.props.changeWord} />
         })}
       </Box>
     )

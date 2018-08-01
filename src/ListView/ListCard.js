@@ -5,10 +5,16 @@ import {Card, Title} from "bloomer"
 
 export default class ListCard extends Component {
 
+  setActiveWord = () => {
+    console.log(this.props.wordObject.id);
+    this.props.showDetails(this.props.wordObject.id)
+
+  }
+
   render() {
     return(
       <Card>
-        <Title>{this.props.wordObject.word}</Title>
+        <Title onClick={() => this.setActiveWord()}>{this.props.wordObject.word}</Title>
       </Card>
     )
   }

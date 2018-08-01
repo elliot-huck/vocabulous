@@ -26,6 +26,13 @@ const LocalApi = Object.create(null, {
       return fetch(`http://localhost:5050/userWords?userId=${activeUser}&_expand=word`)
         .then(e => e.json())
     }
+  },
+
+  getWordById: {
+    value: (wordId) => {
+      return fetch(`http://localhost:5050/words?id=${wordId}`)
+        .then(e => e.json())
+    }
   }
 
 });

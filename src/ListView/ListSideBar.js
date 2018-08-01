@@ -1,15 +1,25 @@
 // This module renders the list side bar which will show the details of any word the user clicks
 
 import React, { Component } from 'react';
-import { Box} from 'bloomer';
+import { Box, Card } from 'bloomer';
+import DetailCard from "./DetailCard"
 
 export default class ListSideBar extends Component {
 
   render() {
-    return(
+    if (this.props.detailId === "") {
+      return (
       <Box className="column is-one-quarter">
-      <h3>Sidebar</h3>
+        <h1>See details</h1>
       </Box>
-    )
+      )
+    } else {
+      return (
+        <Box className="column is-one-quarter">
+          <DetailCard wordId={this.props.detailId} />
+        </Box>
+      )
+    }
   }
+
 }
