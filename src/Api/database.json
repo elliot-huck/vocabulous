@@ -30,6 +30,11 @@
       "userId": 1,
       "wordId": 1,
       "quizFrequency": 1
+    },
+    {
+      "userId": 1,
+      "wordId": 2,
+      "quizFrequency": 1
     }
   ],
   "userQuizzes": []
