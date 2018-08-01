@@ -10,7 +10,7 @@ export default class ListSideBar extends Component {
     if (this.props.detailId === "") {
       return (
       <Box className="column is-one-quarter">
-        <h1>See details</h1>
+        <h1>(click a word to see its details here)</h1>
       </Box>
       )
     } else {
