@@ -32,6 +32,20 @@ const LocalApi = Object.create(null, {
     value: (wordId) => {
       return fetch(`http://localhost:5050/words?id=${wordId}`)
         .then(e => e.json())
+    },
+
+    removeWordFromUser: {
+      value: (wordId, userId) => {
+        return fetch(`http://localhost:5050/userWords?userId=${userId}&wordId=${wordId}`)
+          .then(e => e.json())
+          // .then(connection => {
+          //   console.log(connection);
+          //   // return fetch(`http://localhost:5050/userWords/${connection.id}`, {
+          //   //   method: "DELETE"
+          //   // });
+
+          // // })
+      }
     }
   }
 

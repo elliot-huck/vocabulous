@@ -1,20 +1,30 @@
 // This module renders the list card, which will show a single word and a remove button
 
 import React, { Component } from 'react';
-import {Card, Title} from "bloomer"
+import { Card, Title, Button } from "bloomer"
+import LocalApi from '../Api/LocalApi';
 
 export default class ListCard extends Component {
 
   setActiveWord = () => {
-    console.log(this.props.wordObject.id);
-    this.props.showDetails(this.props.wordObject.id)
+    const newActiveWord = this.props.wordObject.id;
+    this.props.showDetails(newActiveWord)
+  }
 
+  deleteWord = () => {
+    const wordToDelete = this.props.wordObject.id;
+    const currentUser = sessionStorage.getItem("activeUserId");
+    console.log("Remove word #" + wordToDelete + " from user #" + currentUser);
+
+    // This part is broken
+    // LocalApi.removeWordFromUser(wordToDelete, currentUser);
   }
 
   render() {
-    return(
+    return (
       <Card>
         <Title onClick={() => this.setActiveWord()}>{this.props.wordObject.word}</Title>
+        <Button onClick={() => this.deleteWord()}>Remove</Button>
       </Card>
     )
   }
