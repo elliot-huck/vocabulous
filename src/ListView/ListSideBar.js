@@ -3,21 +3,31 @@
 import React, { Component } from 'react';
 import { Box } from 'bloomer';
 import DetailCard from "./DetailCard"
+import { Tile } from '../../node_modules/bloomer/lib/grid/Tile';
 
 export default class ListSideBar extends Component {
 
   render() {
     if (this.props.detailId === "") {
       return (
-      <Box className="column is-one-quarter">
-        <h1>(click a word to see its details here)</h1>
-      </Box>
+        <Tile isChild>
+
+          <Box>
+            <h1>(click a word to see its details here)</h1>
+          </Box>
+
+        </Tile>
+
       )
     } else {
       return (
-        <Box className="column is-one-quarter">
-          <DetailCard wordId={this.props.detailId} />
-        </Box>
+        <Tile isChild>
+
+          <Box>
+            <DetailCard wordId={this.props.detailId} />
+          </Box>
+
+        </Tile>
       )
     }
   }

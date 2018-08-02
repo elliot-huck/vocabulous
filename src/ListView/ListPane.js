@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Box } from 'bloomer';
 import LocalApi from '../Api/LocalApi';
 import ListCard from "./ListCard"
+import { Tile } from '../../node_modules/bloomer/lib/grid/Tile';
 
 export default class ListPane extends Component {
 
@@ -29,14 +30,18 @@ export default class ListPane extends Component {
 
   render() {
     return (
-      <Box className={"column is-three-quarters"}>
-        {this.state.userWordList.map(singleWord => {
-          return <ListCard key={singleWord.id}
-            wordObject={singleWord}
-            showDetails={this.props.changeWord}
-            reloadWords={() => { this.updateList() }} />
-        })}
-      </Box>
+      <Tile isChild isSize={9}>
+
+        <Box>
+          {this.state.userWordList.map(singleWord => {
+            return <ListCard key={singleWord.id}
+              wordObject={singleWord}
+              showDetails={this.props.changeWord}
+              reloadWords={() => { this.updateList() }} />
+          })}
+        </Box>
+
+      </Tile>
     )
   }
 }
