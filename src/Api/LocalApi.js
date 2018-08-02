@@ -44,7 +44,6 @@ const LocalApi = Object.create(null, {
 
   deleteUserWordConnection: {
     value: (connection) => {
-      // console.log(connection)
       return fetch(`http://localhost:5050/userWords/${connection}`, {
         method: "DELETE"
       })

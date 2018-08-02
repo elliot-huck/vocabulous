@@ -1,7 +1,7 @@
 // This module renders the list side bar which will show the details of any word the user clicks
 
 import React, { Component } from 'react';
-import { Box, Card } from 'bloomer';
+import { Box } from 'bloomer';
 import DetailCard from "./DetailCard"
 
 export default class ListSideBar extends Component {
