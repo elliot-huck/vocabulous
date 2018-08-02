@@ -17,7 +17,14 @@ export default class ListCard extends Component {
     console.log("Remove word #" + wordToDelete + " from user #" + currentUser);
 
     // This part is broken
-    // LocalApi.removeWordFromUser(wordToDelete, currentUser);
+    LocalApi.getUserWordConnection(wordToDelete, currentUser)
+      .then(response => {
+        const connectionToDelete = response[0].id;
+        LocalApi.deleteUserWordConnection(connectionToDelete)
+      }).then(wordDeleted => {
+        console.log("word is deleted")
+        this.props.reloadWords()
+      })
   }
 
   render() {

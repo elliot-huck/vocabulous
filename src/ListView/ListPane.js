@@ -11,7 +11,7 @@ export default class ListPane extends Component {
     userWordList: []
   }
 
-  componentDidMount() {
+  updateList = () => {
     const activeUser = sessionStorage.getItem("activeUserId");
     LocalApi.getUserWords(activeUser)
       .then(wordList => {
@@ -22,14 +22,19 @@ export default class ListPane extends Component {
       });
   }
 
+  componentDidMount() {
+    this.updateList();
+  }
 
 
   render() {
     return (
       <Box className={"column is-three-quarters"}>
-        <h3>Word list</h3>
         {this.state.userWordList.map(singleWord => {
-          return <ListCard key={singleWord.id} wordObject={singleWord} showDetails={this.props.changeWord} />
+          return <ListCard key={singleWord.id}
+            wordObject={singleWord}
+            showDetails={this.props.changeWord}
+            reloadWords={() => { this.updateList() }} />
         })}
       </Box>
     )
