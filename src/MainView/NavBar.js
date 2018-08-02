@@ -2,7 +2,7 @@
 
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { Tabs, TabList, Tab, TabLink, Icon } from "bloomer"
+import { Tabs, TabList, Tab } from "bloomer"
 
 export default class NavBar extends Component {
 
