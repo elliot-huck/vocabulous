@@ -21,6 +21,7 @@ export default class ListCard extends Component {
         return LocalApi.deleteUserWordConnection(connectionToDelete)
       }).then(wordDeleted => {
         this.props.reloadWords()
+        this.props.showDetails("")
       })
   }
 
