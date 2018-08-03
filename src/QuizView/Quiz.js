@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Columns } from "bloomer"
 import QuizStats from "./QuizStats"
+import QuizPane from "./QuizPane"
 
 export default class Quiz extends Component {
 
@@ -22,7 +23,7 @@ export default class Quiz extends Component {
     if (this.state.takingQuiz) {
       return (
         <Columns isCentered isVCentered>
-          <h1>Taking a quiz now</h1>
+          <QuizPane end={() => {this.finishQuiz()}} />
         </Columns>
       )
     } else {

@@ -6,10 +6,10 @@ export default class QuizStats extends Component {
 
 
   render() {
-    return(
+    return (
       <Card>
-      <Title>You've taken [some] quizzes! Would you like to start a new one?</Title>
-      <Button onClick={() => {this.props.begin()}}>Start quiz!</Button>
+        <Title>You've taken [some] quizzes! Would you like to start a new one?</Title>
+        <Button isColor="primary" onClick={() => { this.props.begin() }}>Start quiz!</Button>
       </Card>
     )
   }
