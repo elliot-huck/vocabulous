@@ -12,8 +12,6 @@ export default class QuizQuestion extends Component {
     // console.log(this.props.questionList[this.props.currentQuestion].otherAnswers)
     const currentQuestion = this.props.questionList[this.props.currentQuestion];
     const answers = this.props.questionList[this.props.currentQuestion].otherAnswers;
-    console.log("the answers props: ", answers);
-    console.log(answers[0])
 
     return (
       <Card>
@@ -39,9 +37,6 @@ export default class QuizQuestion extends Component {
           </Tile>
 
         </Tile>
-
-        <Button isColor="primary" onClick={() => { this.props.advance() }}>Next Question</Button>
-        <Button isColor="info" onClick={() => { this.props.end() }}>End Quiz</Button>
 
       </Card>
     )

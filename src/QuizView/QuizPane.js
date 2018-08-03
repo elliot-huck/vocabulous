@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Box } from '../../node_modules/bloomer/lib/elements/Box';
+import { Box, Button } from "bloomer";
 import QuizQuestion from "./QuizQuestion"
+import QuizButton from "./QuizButton"
 
 export default class QuizStats extends Component {
 
@@ -10,7 +11,7 @@ export default class QuizStats extends Component {
         word: "",
         rightAnswer: "",
         otherAnswers: [""]
-      }
+      }, {}, {}, {}, {}, {}, {}
     ],
     currentQuestion: 0
   }
@@ -21,33 +22,37 @@ export default class QuizStats extends Component {
     });
   }
 
-componentDidMount() {
-  const newQuiz = [];
-  for (let i = 1; i <= 5; i++) {
-    const questionObject = {
-      word: `word ${i}`,
-      rightAnswer: `answer ${i}`,
-      otherAnswers: ["wrong", "false", "nope"]
+  componentDidMount() {
+    const newQuiz = [];
+    for (let i = 1; i <= 5; i++) {
+      const questionObject = {
+        word: `word ${i}`,
+        rightAnswer: `answer ${i}`,
+        otherAnswers: ["wrong", "false", "nope"]
+      }
+      const lastIndex = questionObject.otherAnswers.length + 1;
+      const randomIndex = Math.floor(Math.random() * lastIndex);
+      questionObject.otherAnswers.splice(randomIndex, 0, questionObject.rightAnswer);
+      // console.log("all answers", questionObject.otherAnswers);
+      newQuiz.push(questionObject);
     }
-    const lastIndex = questionObject.otherAnswers.length + 1;
-    const randomIndex = Math.floor(Math.random() * lastIndex);
-    questionObject.otherAnswers.splice(randomIndex, 0, questionObject.rightAnswer);
-    // console.log("all answers", questionObject.otherAnswers);
-    newQuiz.push(questionObject);
+    this.setState({ questionList: newQuiz });
   }
-  this.setState({questionList: newQuiz});
-}
+
+
 
   render() {
-    // this.loadQuiz()
     return (
       <Box>
         <h1>Choose the correct definition for...</h1>
         <QuizQuestion
           questionList={this.state.questionList}
-          currentQuestion={this.state.currentQuestion}
-          advance={() => { this.nextQuestion() }}
-          end={() => { this.props.end() }} />
+          currentQuestion={this.state.currentQuestion} />
+        <QuizButton
+          questionFinished={this.state.currentQuestion}
+          lastQuestion={this.state.questionList.length}
+          continue={() => { this.nextQuestion() }}
+          finish={() => { this.props.end() }} />
       </Box>
     )
   }
