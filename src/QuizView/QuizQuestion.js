@@ -7,7 +7,7 @@ export default class QuizQuestion extends Component {
   render() {
     return (
       <Card>
-        <Title>Current word</Title>
+        <Title>{this.props.question}</Title>
         <Tile isAncestor>
 
           <Tile isParent isVertical>
@@ -30,7 +30,7 @@ export default class QuizQuestion extends Component {
 
         </Tile>
 
-        <Button isColor="primary" onClick={() => { this.props.end() }}>Next Question</Button>
+        <Button isColor="primary" onClick={() => { this.props.advance() }}>Next Question</Button>
         <Button isColor="info" onClick={() => { this.props.end() }}>End Quiz</Button>
 
       </Card>
