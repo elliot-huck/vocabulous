@@ -2,7 +2,7 @@
 
 const Api = Object.create(null, {
   key: {
-    value: "" // PLace your own API key here
+    value: "" // Place your own API key here
   }
 });
 

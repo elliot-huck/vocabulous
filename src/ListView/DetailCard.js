@@ -12,10 +12,8 @@ export default class DetailCard extends Component {
 // The components above this are changing state, but it's not affecting props of this component, so it won't update
 
   componentDidMount() {
-    console.log("mount", this.props.wordId)
       LocalApi.getWordById(this.props.wordId)
         .then(word => {
-          console.log(word)
           this.setState({wordToRender: word[0]});
         })
   }
@@ -23,10 +21,8 @@ export default class DetailCard extends Component {
   componentDidUpdate(oldProps) {
     if(this.props.wordId !== oldProps.wordId) {
 
-      console.log("update", this.props.wordId)
       LocalApi.getWordById(this.props.wordId)
       .then(word => {
-        console.log(word)
         this.setState({wordToRender: word[0]});
       })
     }
