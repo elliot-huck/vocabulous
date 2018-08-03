@@ -1,7 +1,7 @@
 // This module renders the main List view, where a user can see their list of words
 
 import React, { Component } from 'react';
-import { Tile } from "bloomer"
+import { Columns } from "bloomer"
 import ListPane from './ListPane';
 import ListSideBar from './ListSideBar';
 
@@ -17,12 +17,12 @@ export default class List extends Component {
 
   render() {
     return (
-      <Tile isParent>
+      <Columns>
 
         <ListSideBar detailId={this.state.activeWordId} />
         <ListPane changeWord={(id) => this.changeActiveWord(id)} />
 
-      </Tile>
+      </Columns>
     )
   }
 }

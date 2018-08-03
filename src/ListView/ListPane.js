@@ -1,10 +1,9 @@
 // This module renders the list pane which will show all the user's words in a list
 
 import React, { Component } from 'react';
-import { Box } from 'bloomer';
+import { Box, Column } from 'bloomer';
 import LocalApi from '../Api/LocalApi';
 import ListCard from "./ListCard"
-import { Tile } from '../../node_modules/bloomer/lib/grid/Tile';
 
 export default class ListPane extends Component {
 
@@ -30,7 +29,7 @@ export default class ListPane extends Component {
 
   render() {
     return (
-      <Tile isChild isSize={9}>
+      <Column isSize={9}>
 
         <Box>
           {this.state.userWordList.map(singleWord => {
@@ -41,7 +40,7 @@ export default class ListPane extends Component {
           })}
         </Box>
 
-      </Tile>
+      </Column>
     )
   }
 }

@@ -1,10 +1,8 @@
 // This module renders the list card, which will show a single word and a remove button
 
 import React, { Component } from 'react';
-import { Card, Title } from "bloomer"
+import { Card, Title, Column } from "bloomer"
 import LocalApi from '../Api/LocalApi';
-import { Column } from '../../node_modules/bloomer/lib/grid/Column';
-import { Container } from '../../node_modules/bloomer/lib/layout/Container';
 
 export default class ListCard extends Component {
 
