@@ -13,12 +13,12 @@ export default class QuizStats extends Component {
         otherAnswers: [""]
       }, {}, {}, {}, {}, {}, {}
     ],
-    currentQuestion: 0
+    currentQuestionNumber: 0
   }
 
   nextQuestion = () => {
     this.setState((prevState) => {
-      return { currentQuestion: prevState.currentQuestion + 1 };
+      return { currentQuestionNumber: prevState.currentQuestionNumber + 1 };
     });
   }
 
@@ -46,10 +46,9 @@ export default class QuizStats extends Component {
       <Box>
         <h1>Choose the correct definition for...</h1>
         <QuizQuestion
-          questionList={this.state.questionList}
-          currentQuestion={this.state.currentQuestion} />
+          currentQuestion={this.state.questionList[this.state.currentQuestionNumber]} />
         <QuizButton
-          questionFinished={this.state.currentQuestion}
+          questionFinished={this.state.currentQuestionNumber}
           lastQuestion={this.state.questionList.length}
           continue={() => { this.nextQuestion() }}
           finish={() => { this.props.end() }} />
