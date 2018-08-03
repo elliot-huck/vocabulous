@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Card, Tiles, Tile, Title, Tag, Button } from "bloomer"
+import { Card, Tile, Title, Tag } from "bloomer"
 
 export default class QuizQuestion extends Component {
 

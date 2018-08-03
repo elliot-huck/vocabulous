@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Title, Column, Card } from "bloomer"
+import { Title, Card } from "bloomer"
 import { Button } from '../../node_modules/bloomer/lib/elements/Button';
 
 export default class QuizStats extends Component {

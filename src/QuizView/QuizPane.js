@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Button } from "bloomer";
+import { Box } from "bloomer";
 import QuizQuestion from "./QuizQuestion"
 import QuizButton from "./QuizButton"
 
