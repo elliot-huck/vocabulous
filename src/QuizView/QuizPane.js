@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import { Title, Column, Card } from "bloomer"
-import { Button } from '../../node_modules/bloomer/lib/elements/Button';
-import { Tag } from '../../node_modules/bloomer/lib/elements/Tag';
+import { Box } from '../../node_modules/bloomer/lib/elements/Box';
+import QuizQuestion from "./QuizQuestion"
 
 export default class QuizStats extends Component {
+
+  state = {
+    questionList: [],
+    currentQuestion: 0
+  }
 
 
   render() {
     return (
-      <Card>
-        <Title>Current word</Title>
-        <Tag>option</Tag>
-        <Tag>option</Tag>
-        <Tag>option</Tag>
-        <Tag>option</Tag>
-        <Button isColor="info" onClick={() => { this.props.end() }}>End Quiz</Button>
-
-      </Card>
+      <Box>
+        <h1>Choose the correct definition for...</h1>
+        <QuizQuestion end={() => { this.props.end() }} />
+      </Box>
     )
   }
 }
