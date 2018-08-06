@@ -17,10 +17,8 @@ export default class QuizButton extends Component {
       )
     } else {
       return (
-        <Button isColor="info" onClick={() => {
-          this.props.grade();
-          this.props.finish();
-        }}>End Quiz</Button>
+        <Button isColor="info"
+        onClick={() => {this.props.grade()}}>End Quiz</Button>
       )
     }
   }

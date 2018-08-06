@@ -44,8 +44,11 @@ export default class QuizStats extends Component {
           userId: parseInt(sessionStorage.getItem("activeUserId")),
           quizId: response.id
         }
-        LocalApi.addUserQuizConnection(newConnection).then(
-          alert(`You got ${rightAnswers} questions right out of ${totalQuestions}`)
+        alert(`You got ${rightAnswers} questions right out of ${totalQuestions}`)
+
+        LocalApi.addUserQuizConnection(newConnection).then(response => {
+          this.props.end();
+        }
         )
       })
 
@@ -83,8 +86,7 @@ export default class QuizStats extends Component {
           questionFinished={this.state.currentQuestionNumber}
           lastQuestion={this.state.questionList.length}
           continue={() => { this.nextQuestion() }}
-          grade={() => { this.showScore() }}
-          finish={() => { this.props.end() }} />
+          grade={() => { this.showScore() }} />
       </Box>
     )
   }
