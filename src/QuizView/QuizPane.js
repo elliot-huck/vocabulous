@@ -54,11 +54,19 @@ export default class QuizStats extends Component {
       })
   }
 
+  shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
   createNewQuiz = () => {
     const newQuiz = [];
     const currentUser = sessionStorage.getItem("activeUserId")
     LocalApi.getUserWords(currentUser)
       .then(response => {
+
         console.log("api response", response)
         const allWords = response.map(element => {
           return element.word;
@@ -68,7 +76,26 @@ export default class QuizStats extends Component {
           return word.definition;
         })
         console.log("definitions", allDefinitions)
+        allWords.forEach(wordElement => {
+          const newQuestion = {};
+          newQuestion.word = wordElement.word;
+          newQuestion.rightAnswer = wordElement.definition;
 
+          const someDefinitions = [`${wordElement.definition}`];
+          while(someDefinitions.length < 4) {
+            console.log("some", someDefinitions)
+            let j = Math.floor(Math.random() * allDefinitions.length);
+            if ( !(someDefinitions.includes(allDefinitions[j])) ) {
+              someDefinitions.push(allDefinitions[j]);
+              console.log(someDefinitions)
+            }
+          }
+
+          newQuestion.allAnswers = someDefinitions;
+          console.log("New question", newQuestion);
+          newQuiz.push(newQuestion);
+        })
+        console.log("new quiz", newQuiz)
       })
   }
 
