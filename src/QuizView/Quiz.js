@@ -8,19 +8,19 @@ import QuizPane from "./QuizPane"
 export default class Quiz extends Component {
 
   state = {
-    takingQuiz: false
+    quizInProgress: false
   }
 
   startQuiz = () => {
-    this.setState({ takingQuiz: true });
+    this.setState({ quizInProgress: true });
   }
 
   finishQuiz = () => {
-    this.setState({ takingQuiz: false })
+    this.setState({ quizInProgress: false })
   }
 
   render() {
-    if (this.state.takingQuiz) {
+    if (this.state.quizInProgress) {
       return (
         <Columns isCentered isVCentered>
           <QuizPane end={() => {this.finishQuiz()}} />

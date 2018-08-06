@@ -7,13 +7,14 @@ export default class QuizStats extends Component {
 
   state = {
     questionList: [
-      {
-        word: "",
-        rightAnswer: "",
-        otherAnswers: [""]
-      }, {}, {}, {}, {}, {}, {}
+      // {
+      //   word: "",
+      //   rightAnswer: "",
+      //   allAnswers: [""]
+      // }, {}, {}, {}, {}, {}, {}
     ],
-    currentQuestionNumber: 0
+    currentQuestionNumber: 0,
+    numCorrect: 0
   }
 
   nextQuestion = () => {
@@ -22,17 +23,27 @@ export default class QuizStats extends Component {
     });
   }
 
-  componentDidMount() {
+  increaseScore = () => {
+    this.setState((prevState) => {
+      return { numCorrect: prevState.numCorrect + 1 };
+    });
+  }
+
+  showScore = () => {
+    alert(`You got ${this.state.numCorrect} questions right out of ${this.state.questionList.length}`)
+  }
+
+  componentWillMount() {
     const newQuiz = [];
     for (let i = 1; i <= 5; i++) {
       const questionObject = {
         word: `word ${i}`,
         rightAnswer: `answer ${i}`,
-        otherAnswers: ["wrong", "false", "nope"]
+        allAnswers: ["wrong", "false", "nope"]
       }
-      const lastIndex = questionObject.otherAnswers.length + 1;
+      const lastIndex = questionObject.allAnswers.length + 1;
       const randomIndex = Math.floor(Math.random() * lastIndex);
-      questionObject.otherAnswers.splice(randomIndex, 0, questionObject.rightAnswer);
+      questionObject.allAnswers.splice(randomIndex, 0, questionObject.rightAnswer);
       // console.log("all answers", questionObject.otherAnswers);
       newQuiz.push(questionObject);
     }
@@ -46,11 +57,14 @@ export default class QuizStats extends Component {
       <Box>
         <h1>Choose the correct definition for...</h1>
         <QuizQuestion
-          currentQuestion={this.state.questionList[this.state.currentQuestionNumber]} />
+          currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
+          increaseScore={() => this.increaseScore()}
+        />
         <QuizButton
           questionFinished={this.state.currentQuestionNumber}
           lastQuestion={this.state.questionList.length}
           continue={() => { this.nextQuestion() }}
+          grade={() => {this.showScore()}}
           finish={() => { this.props.end() }} />
       </Box>
     )
