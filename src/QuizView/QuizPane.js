@@ -47,17 +47,33 @@ export default class QuizStats extends Component {
           quizId: response.id
         }
         alert(`You got ${rightAnswers} questions right out of ${totalQuestions}`)
-
         LocalApi.addUserQuizConnection(newConnection).then(response => {
           this.props.end();
         }
         )
       })
+  }
 
+  createNewQuiz = () => {
+    const newQuiz = [];
+    const currentUser = sessionStorage.getItem("activeUserId")
+    LocalApi.getUserWords(currentUser)
+      .then(response => {
+        console.log("api response", response)
+        const allWords = response.map(element => {
+          return element.word;
+        })
+        console.log("words", allWords)
+        const allDefinitions = allWords.map(word => {
+          return word.definition;
+        })
+        console.log("definitions", allDefinitions)
 
+      })
   }
 
   componentWillMount() {
+    this.createNewQuiz();
     const newQuiz = [];
     for (let i = 1; i <= 5; i++) {
       const questionObject = {
