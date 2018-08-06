@@ -40,7 +40,13 @@
       "id": 4
     }
   ],
-  "quizzes": [],
+  "quizzes": [
+    {
+      "numQuestions": 5,
+      "numCorrect": 1,
+      "id": 1
+    }
+  ],
   "userWords": [
     {
       "userId": 1,
@@ -67,5 +73,11 @@
       "id": 4
     }
   ],
-  "userQuizzes": []
+  "userQuizzes": [
+    {
+      "userId": 1,
+      "quizId": 1,
+      "id": 1
+    }
+  ]
 }

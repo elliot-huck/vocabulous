@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Box } from "bloomer";
 import QuizQuestion from "./QuizQuestion"
 import QuizButton from "./QuizButton"
+import LocalApi from '../Api/LocalApi';
 
 export default class QuizStats extends Component {
 
@@ -30,7 +31,25 @@ export default class QuizStats extends Component {
   }
 
   showScore = () => {
-    alert(`You got ${this.state.numCorrect} questions right out of ${this.state.questionList.length}`)
+    const rightAnswers = this.state.numCorrect
+    const totalQuestions = this.state.questionList.length
+    const newQuiz = {
+      numQuestions: totalQuestions,
+      numCorrect: rightAnswers
+    }
+    LocalApi.saveQuizResults(newQuiz)
+      .then(response => {
+        console.log("response", response)
+        const newConnection = {
+          userId: parseInt(sessionStorage.getItem("activeUserId")),
+          quizId: response.id
+        }
+        LocalApi.addUserQuizConnection(newConnection).then(
+          alert(`You got ${rightAnswers} questions right out of ${totalQuestions}`)
+        )
+      })
+
+
   }
 
   componentWillMount() {
@@ -64,7 +83,7 @@ export default class QuizStats extends Component {
           questionFinished={this.state.currentQuestionNumber}
           lastQuestion={this.state.questionList.length}
           continue={() => { this.nextQuestion() }}
-          grade={() => {this.showScore()}}
+          grade={() => { this.showScore() }}
           finish={() => { this.props.end() }} />
       </Box>
     )

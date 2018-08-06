@@ -19,6 +19,8 @@ export default class Quiz extends Component {
     this.setState({ quizInProgress: false })
   }
 
+  componentDidMount() {}
+
   render() {
     if (this.state.quizInProgress) {
       return (
