@@ -9,13 +9,12 @@ import LocalApi from '../Api/LocalApi';
 export default class QuizStats extends Component {
 
   state = {
-    questionList: [
-      // {
-      //   word: "",
-      //   rightAnswer: "",
-      //   allAnswers: [""]
-      // }, {}, {}, {}, {}, {}, {}
-    ],
+    // This blank question object is to keep React from freaking out when it tries to mount question 1
+    questionList: [{
+      word: "",
+      rightAnswer: "",
+      allAnswers: ["", "", "", ""]
+    }],
     currentQuestionNumber: 0,
     numCorrect: 0
   }
@@ -96,25 +95,12 @@ export default class QuizStats extends Component {
           newQuiz.push(newQuestion);
         })
         console.log("new quiz", newQuiz)
+        this.setState({questionList: newQuiz})
       })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.createNewQuiz();
-    const newQuiz = [];
-    for (let i = 1; i <= 5; i++) {
-      const questionObject = {
-        word: `word ${i}`,
-        rightAnswer: `answer ${i}`,
-        allAnswers: ["wrong", "false", "nope"]
-      }
-      const lastIndex = questionObject.allAnswers.length + 1;
-      const randomIndex = Math.floor(Math.random() * lastIndex);
-      questionObject.allAnswers.splice(randomIndex, 0, questionObject.rightAnswer);
-      // console.log("all answers", questionObject.otherAnswers);
-      newQuiz.push(questionObject);
-    }
-    this.setState({ questionList: newQuiz });
   }
 
 
