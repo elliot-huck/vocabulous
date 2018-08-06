@@ -49,8 +49,38 @@ const LocalApi = Object.create(null, {
       })
         .then(e => e.json())
     }
-  }
+  },
 
+  getUserQuizConnections: {
+    value: (activeUser) => {
+      return fetch(`http://localhost:5050/userQuizzes?userId=${activeUser}&_expand=quiz`)
+        .then(e => e.json())
+    }
+  },
+
+  saveQuizResults: {
+    value: (newQuiz) => {
+      return fetch("http://localhost:5050/quizzes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newQuiz)
+      }).then(e => e.json());
+    }
+  },
+
+  addUserQuizConnection: {
+    value: (newConnection) => {
+      return fetch("http://localhost:5050/userQuizzes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newConnection)
+      }).then(e => e.json());
+    }
+  }
 
 });
 
