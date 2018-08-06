@@ -1,3 +1,4 @@
+// This module renders the current quiz question being viewed
 
 import React, { Component } from 'react';
 import { Card, Tile, Title } from "bloomer"
@@ -14,12 +15,10 @@ export default class QuizQuestion extends Component {
       const userSelection = evt.target.textContent;
 
       if (userSelection === this.props.currentQuestion.rightAnswer) {
-        console.log("Correct!")
         this.props.increaseScore();
         alert("Correct! Click 'Next Question' to continue...");
         // evt.target.classList += " is-success"
       } else {
-        console.log("Try again...")
         alert("Try again...")
         // evt.target.classList += " is-danger"
       }

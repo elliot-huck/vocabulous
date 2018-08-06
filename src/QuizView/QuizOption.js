@@ -1,3 +1,4 @@
+// This module renders a single multiple-choice option for the quiz
 
 import React, { Component } from 'react';
 import { Tile, Tag } from "bloomer"

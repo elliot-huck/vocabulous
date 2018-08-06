@@ -1,3 +1,5 @@
+// This module displays stats on past quizzes. Right now, this is limited to the number of quizzes taken by the current user
+
 import React, { Component } from 'react';
 import { Title, Card } from "bloomer"
 import { Button } from '../../node_modules/bloomer/lib/elements/Button';

@@ -1,3 +1,5 @@
+// This module renders the quiz that is currently being taken
+
 import React, { Component } from 'react';
 import { Box } from "bloomer";
 import QuizQuestion from "./QuizQuestion"
