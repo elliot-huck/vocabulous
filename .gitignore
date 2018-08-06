@@ -10,7 +10,7 @@
 /build
 
 # API information
-#/src/Api/ApiKey.js
+/src/Api/ApiKey.js
 
 
 # misc
