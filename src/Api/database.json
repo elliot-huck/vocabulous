@@ -50,6 +50,11 @@
       "numQuestions": 4,
       "numCorrect": 4,
       "id": 2
+    },
+    {
+      "numQuestions": 4,
+      "numCorrect": 0,
+      "id": 3
     }
   ],
   "userWords": [
@@ -88,6 +93,11 @@
       "userId": 1,
       "quizId": 2,
       "id": 2
+    },
+    {
+      "userId": 1,
+      "quizId": 3,
+      "id": 3
     }
   ]
 }

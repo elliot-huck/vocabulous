@@ -40,7 +40,7 @@ export default class QuizStats extends Component {
     }
     LocalApi.saveQuizResults(newQuiz)
       .then(response => {
-        console.log("response", response)
+        // console.log("response", response)
         const newConnection = {
           userId: parseInt(sessionStorage.getItem("activeUserId")),
           quizId: response.id
@@ -61,41 +61,43 @@ export default class QuizStats extends Component {
   }
 
   createNewQuiz = () => {
-    const newQuiz = [];
+    let newQuiz = [];
     const currentUser = sessionStorage.getItem("activeUserId")
     LocalApi.getUserWords(currentUser)
       .then(response => {
 
-        console.log("api response", response)
+        // console.log("api response", response)
         const allWords = response.map(element => {
           return element.word;
         })
-        console.log("words", allWords)
+        // console.log("words", allWords)
         const allDefinitions = allWords.map(word => {
           return word.definition;
         })
-        console.log("definitions", allDefinitions)
+        // console.log("definitions", allDefinitions)
         allWords.forEach(wordElement => {
           const newQuestion = {};
           newQuestion.word = wordElement.word;
           newQuestion.rightAnswer = wordElement.definition;
 
           const someDefinitions = [`${wordElement.definition}`];
-          while(someDefinitions.length < 4) {
-            console.log("some", someDefinitions)
+          while (someDefinitions.length < 4) {
+            // console.log("some", someDefinitions)
             let j = Math.floor(Math.random() * allDefinitions.length);
-            if ( !(someDefinitions.includes(allDefinitions[j])) ) {
+            if (!(someDefinitions.includes(allDefinitions[j]))) {
               someDefinitions.push(allDefinitions[j]);
-              console.log(someDefinitions)
+              // console.log(someDefinitions)
             }
           }
 
           newQuestion.allAnswers = someDefinitions;
-          console.log("New question", newQuestion);
+          // console.log("New question created", newQuestion);
           newQuiz.push(newQuestion);
         })
-        console.log("new quiz", newQuiz)
-        this.setState({questionList: newQuiz})
+        // console.log("new quiz", newQuiz);
+        this.shuffleArray(newQuiz);
+        // console.log("new quiz shuffle", newQuiz);
+        this.setState({ questionList: newQuiz })
       })
   }
 
