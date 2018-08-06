@@ -8,7 +8,7 @@ import QuizPane from "./QuizPane"
 export default class Quiz extends Component {
 
   state = {
-    quizInProgress: false
+    quizInProgress: false,
   }
 
   startQuiz = () => {
@@ -19,7 +19,7 @@ export default class Quiz extends Component {
     this.setState({ quizInProgress: false })
   }
 
-  componentDidMount() {}
+
 
   render() {
     if (this.state.quizInProgress) {

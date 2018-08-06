@@ -51,6 +51,13 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  getUserQuizConnections: {
+    value: (activeUser) => {
+      return fetch(`http://localhost:5050/userQuizzes?userId=${activeUser}&_expand=quiz`)
+        .then(e => e.json())
+    }
+  },
+
   saveQuizResults: {
     value: (newQuiz) => {
       return fetch("http://localhost:5050/quizzes", {
