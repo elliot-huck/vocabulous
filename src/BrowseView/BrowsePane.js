@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
-import { Box } from '../../node_modules/bloomer/lib/elements/Box';
+import { Box, Title } from 'bloomer';
+import BrowseCard from './BrowseCard';
 
 export default class BrowsePane extends Component {
 
   render() {
     return (
-      <Box>This is the browse pane</Box>
+      <Box>
+
+        <span>This is the browse pane</span>
+        {this.props.wordBatch.map(eachWord => {
+          return <BrowseCard
+            key={this.props.wordBatch.indexOf(eachWord)}
+            show={eachWord.word} />
+        })}
+      </Box>
     )
   }
 }
