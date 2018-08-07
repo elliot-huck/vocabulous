@@ -8,22 +8,25 @@ export default class BrowseCard extends Component {
     showingDetails: false
   }
 
-  showDetails = () => {
+  displayDetails = () => {
     this.setState({ showingDetails: true })
   }
 
   render() {
-    if (this.state.showingDetails) {
-      return (
-        <React.Fragment>
-          <BrowseDetails wordToRender={this.props.wordObject} />
-          <Button isColor="success">Add word</Button>
-        </React.Fragment>
-      )
-    }
+    // if (this.state.showingDetails) {
+    //   return (
+    //     <React.Fragment>
+    //       <BrowseDetails wordToRender={this.props.wordObject} />
+    //     </React.Fragment>
+    //   )
+    // }
     return (
       <Card>
-        <Title className={} onClick={this.props.showDetails}>{this.props.show}</Title>
+        <Title className={`${this.props.targetNumber}`} onClick={this.props.showDetails}>{this.props.show.word}</Title>
+        <p>{this.props.show.partOfSpeech}</p>
+        <p>{this.props.show.definition}</p>
+        <p>{this.props.show.sentence}</p>
+      <Button isColor="success">Add word</Button>
         {/* <Button isColor="danger">Not interested</Button> */}
       </Card>
     )
