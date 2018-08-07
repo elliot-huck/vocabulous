@@ -36,13 +36,22 @@ export default class Browse extends Component {
     }
     // Call external API for definitions
     ExternalApi.getWordDefinition(clickedWord)
-      .then(response => {
-        const definitionDetail = response[0].text;
-        const partOfSpeechDetail = response[0].partOfSpeech;
+      .then(defResponse => {
+        const definitionDetail = defResponse[0].text;
+        const partOfSpeechDetail = defResponse[0].partOfSpeech;
         detailedWord.partOfSpeech = partOfSpeechDetail
         detailedWord.definition = definitionDetail;
-        console.log(detailedWord)
+
+        ExternalApi.getWordSentence(clickedWord)
+          .then(sentResponse => {
+            const sentenceDetail = sentResponse.examples[0];
+            const theActualSentence = sentenceDetail.text;
+            console.log("the actual sentence", theActualSentence)
+            detailedWord.sentence = theActualSentence;
+            console.log("full word object", detailedWord)
+          })
       })
+
     // set def and part of speech
     // call ext api for example
     // set example sentence

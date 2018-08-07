@@ -16,6 +16,13 @@ const ExternalApi = Object.create(null, {
       return fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=1&includeRelated=false&sourceDictionaries=ahd&useCanonical=false&includeTags=false&api_key=${Api.key}`)
         .then(e => e.json())
     }
+  },
+
+  getWordSentence: {
+    value: (word) => {
+      return fetch(`https://api.wordnik.com/v4/word.json/${word}/examples?includeDuplicates=false&useCanonical=false&limit=1&api_key=${Api.key}`)
+        .then(e => e.json())
+    }
   }
 
 })
