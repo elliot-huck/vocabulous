@@ -10,16 +10,16 @@ export default class Browse extends Component {
   state = {
     currentWordBatch: [
       {
-        word: "test",
+        word: "test"
       },
       {
-        word: "example",
+        word: "example"
       },
       {
-        word: "word",
+        word: "word"
       },
       {
-        word: "owl",
+        word: "owl"
       }]
   }
 
@@ -31,12 +31,15 @@ export default class Browse extends Component {
     const clickedWord = evt.target.textContent
     console.log("clicked on ", clickedWord)
     // define object
+    console.log("replacing index #", indexToReplace)
     const detailedWord = {
       word: clickedWord
     }
+
     // Call external API for definitions
     ExternalApi.getWordDefinition(clickedWord)
       .then(defResponse => {
+
         const definitionDetail = defResponse[0].text;
         const partOfSpeechDetail = defResponse[0].partOfSpeech;
         detailedWord.partOfSpeech = partOfSpeechDetail
@@ -46,9 +49,10 @@ export default class Browse extends Component {
           .then(sentResponse => {
             const sentenceDetail = sentResponse.examples[0];
             const theActualSentence = sentenceDetail.text;
-            console.log("the actual sentence", theActualSentence)
             detailedWord.sentence = theActualSentence;
-            console.log("full word object", detailedWord)
+            console.log("full word object", detailedWord);
+
+            // this.setState(())
           })
       })
 
