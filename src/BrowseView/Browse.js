@@ -27,6 +27,15 @@ export default class Browse extends Component {
 
   }
 
+  addDetails = (evt) => {
+    // define object
+    // Call external API for definitions
+    // set def and part of speech
+    // call ext api for example
+    // set example sentence
+    // set state
+  }
+
 
   render() {
 
