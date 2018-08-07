@@ -12,6 +12,7 @@ export default class BrowsePane extends Component {
         {this.props.wordBatch.map(eachWord => {
           return <BrowseCard
             key={this.props.wordBatch.indexOf(eachWord)}
+            showDetails={this.props.showDetails}
             show={eachWord.word} />
         })}
       </Box>
