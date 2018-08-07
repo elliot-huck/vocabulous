@@ -1,6 +1,7 @@
 // This module renders the main Browse view, where the user can browse words to add to their list
 
 import React, { Component } from 'react';
+import { Button } from "bloomer"
 import ExternalApi from "../Api/ExternalApi"
 import BrowsePane from "./BrowsePane"
 
@@ -26,11 +27,11 @@ export default class Browse extends Component {
   newWordBatch = () => {
     ExternalApi.getMoreWords()
       .then(response => {
-        const wordArray = response.map(eachResponse =>{
-          return {word: `${eachResponse.word}`}
+        const wordArray = response.map(eachResponse => {
+          return { word: `${eachResponse.word}` }
         })
         console.log(wordArray);
-        this.setState({currentWordBatch: wordArray})
+        this.setState({ currentWordBatch: wordArray })
       })
   }
 
@@ -88,10 +89,15 @@ export default class Browse extends Component {
     // [{id: word: ""}]
 
     return (
-      <BrowsePane
-        wordBatch={this.state.currentWordBatch}
-        showDetails={(evt) => { this.addDetails(evt) }}
-      />
+      <React.Fragment>
+
+        <Button onClick={() => { this.newWordBatch() }}>Get different words</Button>
+        <BrowsePane
+          wordBatch={this.state.currentWordBatch}
+          showDetails={(evt) => { this.addDetails(evt) }}
+        />
+
+      </React.Fragment>
     )
   }
 }
