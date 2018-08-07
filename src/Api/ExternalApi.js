@@ -13,7 +13,7 @@ const ExternalApi = Object.create(null, {
 
   getWordDefinition: {
     value: (word) => {
-      return fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=1&includeRelated=false&sourceDictionaries=ahd&useCanonical=false&includeTags=false&api_key=${Api.key}`)
+      return fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=1&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=${Api.key}`)
         .then(e => e.json())
     }
   },

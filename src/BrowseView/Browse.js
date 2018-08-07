@@ -24,7 +24,14 @@ export default class Browse extends Component {
   }
 
   newWordBatch = () => {
-
+    ExternalApi.getMoreWords()
+      .then(response => {
+        const wordArray = response.map(eachResponse =>{
+          return {word: `${eachResponse.word}`}
+        })
+        console.log(wordArray);
+        this.setState({currentWordBatch: wordArray})
+      })
   }
 
   addDetails = (evt) => {
@@ -45,32 +52,31 @@ export default class Browse extends Component {
         const partOfSpeechDetail = defResponse[0].partOfSpeech;
         detailedWord.partOfSpeech = partOfSpeechDetail
         detailedWord.definition = definitionDetail;
-
+        // Call external API for the example sentence
         ExternalApi.getWordSentence(clickedWord)
           .then(sentResponse => {
             const sentenceDetail = sentResponse.examples[0];
             const theActualSentence = sentenceDetail.text;
             detailedWord.sentence = theActualSentence;
             console.log("full word object", detailedWord);
-
+            // Set the state by replacing the clicked word's index with the new detail object
             this.setState((prevState) => {
               console.log("running set state")
               console.log(indexToReplace)
               console.log(detailedWord)
               prevState.currentWordBatch[indexToReplace] = detailedWord;
               console.log(prevState)
-              return {currentWordBatch: prevState.currentWordBatch}
+              return { currentWordBatch: prevState.currentWordBatch }
 
             })
           })
       })
 
-    // set def and part of speech
-    // call ext api for example
-    // set example sentence
-    // set state
   }
 
+  componentDidMount() {
+    this.newWordBatch();
+  }
 
   render() {
 
