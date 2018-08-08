@@ -69,6 +69,13 @@
       "definition": "A small thin piece of metal, plastic, bone, or similar material, used to pluck the strings of certain instruments, such as the guitar or lute.",
       "sentence": "The ants have two segments of their abdomen, that's the last section of their bodies, that they rub together and one of these sections has a whole series of grooves on them and the other half has something that we call the plectrum, that is a bit like the plectrum of a guitar except it itself has several grooves, and when they rub these two surfaces together it produces sort of chirruping type noises.",
       "id": 9
+    },
+    {
+      "word": "hadal",
+      "partOfSpeech": "adjective",
+      "definition": "super deep part of the ocean",
+      "sentence": "The hadal zone is wicked deep.",
+      "id": 10
     }
   ],
   "quizzes": [
@@ -117,19 +124,6 @@
       "wordId": 4,
       "quizFrequency": 1,
       "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "userId": "1",
-      "wordId": 8,
-      "id": 6
-    },
-    {
-      "userId": "1",
-      "wordId": 9,
-      "id": 7
     }
   ],
   "userQuizzes": [

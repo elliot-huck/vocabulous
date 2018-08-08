@@ -6,7 +6,7 @@ import BrowseCard from './BrowseCard';
 export default class BrowsePane extends Component {
 
   addWordToList = (wordToAdd) => {
-    const currentUser = sessionStorage.getItem("activeUserId");
+    const currentUser = parseInt(sessionStorage.getItem("activeUserId"));
     console.log("current user", currentUser);
     const wordToSearch = wordToAdd.word;
     console.log(wordToSearch);
@@ -28,9 +28,22 @@ export default class BrowsePane extends Component {
               }
               LocalApi.addUserWordConnection(newUserWordConnection)
             })
-            
+
         } else {
-          console.log("That word is in the database")
+          console.log("That word is in the database");
+          const wordId = matchingWords[0].id;
+          LocalApi.getUserWordConnection(wordId, currentUser)
+            .then(userHasWord => {
+              if (userHasWord.length === 0) {
+                const newUserWordConnection = {
+                  userId: currentUser,
+                  wordId: wordId
+                }
+                LocalApi.addUserWordConnection(newUserWordConnection)
+              } else {
+                alert("You already have that word in your list")
+              }
+            })
         }
       })
   }
