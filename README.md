@@ -3,11 +3,11 @@
 Vocabulous is a vocabulary-building app where users can view random words, save interesting words to a personal word list, and take quizzes on the words that are saved in that list.
 
 ## Technologies used:
-- React
-- JSON Server
-- Wordnik API
-- Bulma
-- Bloomer
+- [React] (https://reactjs.org/docs/getting-started.html)
+- [JSON Server] (https://github.com/typicode/json-server)
+- [Wordnik API] (https://developer.wordnik.com/)
+- [Bulma] (https://bulma.io/)
+- [Bloomer] (https://bloomer.js.org/#/)
 
 ## Try it out yourself:
 To run this project on your own machine, do the following (requires npm):
