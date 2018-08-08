@@ -15,7 +15,6 @@ componentDidMount() {
   const user = sessionStorage.getItem("activeUserId");
   LocalApi.getUserQuizConnections(user)
   .then(response => {
-    console.log(response.length);
     this.setState({quizzesTaken: response.length});
   })
 }

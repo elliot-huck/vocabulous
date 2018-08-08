@@ -21,10 +21,22 @@ const LocalApi = Object.create(null, {
     }
   },
 
-  getUserWords: {
-    value: (activeUser) => {
-      return fetch(`http://localhost:5050/userWords?userId=${activeUser}&_expand=word`)
+  searchWords: {
+    value: (wordToSearch) => {
+      return fetch(`http://localhost:5050/words?word=${wordToSearch}`)
         .then(e => e.json())
+    }
+  },
+
+  saveWord: {
+    value: (wordToSave) => {
+      return fetch("http://localhost:5050/words", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(wordToSave)
+      }).then(e => e.json());
     }
   },
 
@@ -32,6 +44,25 @@ const LocalApi = Object.create(null, {
     value: (wordId) => {
       return fetch(`http://localhost:5050/words?id=${wordId}`)
         .then(e => e.json())
+    }
+  },
+
+  getUserWords: {
+    value: (activeUser) => {
+      return fetch(`http://localhost:5050/userWords?userId=${activeUser}&_expand=word`)
+        .then(e => e.json())
+    }
+  },
+
+  addUserWordConnection: {
+    value: (newConnection) => {
+      return fetch("http://localhost:5050/userWords", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newConnection)
+      }).then(e => e.json());
     }
   },
 

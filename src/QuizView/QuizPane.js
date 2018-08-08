@@ -42,7 +42,7 @@ export default class QuizStats extends Component {
       .then(response => {
         // console.log("response", response)
         const newConnection = {
-          userId: parseInt(sessionStorage.getItem("activeUserId")),
+          userId: parseInt(sessionStorage.getItem("activeUserId"), 10),
           quizId: response.id
         }
         alert(`You got ${rightAnswers} questions right out of ${totalQuestions}`)
