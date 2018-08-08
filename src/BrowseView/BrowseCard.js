@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Button, Title } from 'bloomer';
-import BrowseDetails from './BrowseDetails';
 
 export default class BrowseCard extends Component {
 

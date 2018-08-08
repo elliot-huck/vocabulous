@@ -30,7 +30,6 @@ export default class Browse extends Component {
         const wordArray = response.map(eachResponse => {
           return { word: `${eachResponse.word}` }
         })
-        console.log(wordArray);
         this.setState({ currentWordBatch: wordArray })
       })
   }
@@ -39,7 +38,7 @@ export default class Browse extends Component {
     const clickedWord = evt.target.textContent
     // console.log("clicked on ", clickedWord)
     // define object
-    const indexToReplace = parseInt((evt.target.className).split(" ")[1])
+    const indexToReplace = parseInt((evt.target.className).split(" ")[1], 10)
     // console.log("replacing index #", indexToReplace)
     const detailedWord = {
       word: clickedWord

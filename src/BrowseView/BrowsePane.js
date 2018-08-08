@@ -1,27 +1,22 @@
 import React, { Component } from 'react'
-import { Box, Title, Button } from 'bloomer';
+import { Box, Button } from 'bloomer';
 import LocalApi from "../Api/LocalApi"
 import BrowseCard from './BrowseCard';
 
 export default class BrowsePane extends Component {
 
   addWordToList = (wordToAdd) => {
-    const currentUser = parseInt(sessionStorage.getItem("activeUserId"));
-    console.log("current user", currentUser);
+    const currentUser = parseInt(sessionStorage.getItem("activeUserId"), 10);
     const wordToSearch = wordToAdd.word;
-    console.log(wordToSearch);
 
     LocalApi.searchWords(wordToSearch)
       .then(matchingWords => {
-        console.log(matchingWords)
 
         if (matchingWords.length === 0) {
-          console.log("That word is not in the database yet");
 
           LocalApi.saveWord(wordToAdd)
             .then(response => {
               const addedWordId = response.id;
-              console.log(addedWordId);
               const newUserWordConnection = {
                 userId: currentUser,
                 wordId: addedWordId
@@ -30,7 +25,6 @@ export default class BrowsePane extends Component {
             })
 
         } else {
-          console.log("That word is in the database");
           const wordId = matchingWords[0].id;
           LocalApi.getUserWordConnection(wordId, currentUser)
             .then(userHasWord => {

@@ -76,6 +76,20 @@
       "definition": "super deep part of the ocean",
       "sentence": "The hadal zone is wicked deep.",
       "id": 10
+    },
+    {
+      "word": "fairing",
+      "partOfSpeech": "noun",
+      "definition": "An auxiliary structure or the external surface of a vehicle, such as an aircraft, that serves to reduce drag.",
+      "sentence": "The fairing is a clamshell structure that encapsulates the satellite as it travels through the atmosphere.",
+      "id": 11
+    },
+    {
+      "word": "cadent",
+      "partOfSpeech": "adjective",
+      "definition": "Having cadence or rhythm.",
+      "sentence": "You have begun now the Plotinian ascent from multiplicity to unity, and therefore begin to perceive in the Many the clear and actual presence of the One: the changeless and absolute Life, manifesting itself in all the myriad nascent, crescent, cadent lives.",
+      "id": 12
     }
   ],
   "quizzes": [
@@ -98,6 +112,11 @@
       "numQuestions": 6,
       "numCorrect": 6,
       "id": 4
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 0,
+      "id": 5
     }
   ],
   "userWords": [
@@ -124,6 +143,16 @@
       "wordId": 4,
       "quizFrequency": 1,
       "id": 4
+    },
+    {
+      "userId": 1,
+      "wordId": 11,
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "wordId": 12,
+      "id": 6
     }
   ],
   "userQuizzes": [
@@ -146,6 +175,11 @@
       "userId": 1,
       "quizId": 4,
       "id": 4
+    },
+    {
+      "userId": 1,
+      "quizId": 5,
+      "id": 5
     }
   ]
 }
