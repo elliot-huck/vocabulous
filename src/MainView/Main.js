@@ -21,6 +21,11 @@ export default class Main extends Component {
         <Route path="/quiz"
           render={() => { return <Quiz /> }} />
 
+        {/* <Route path="/callback" render={(props) => {
+          handleAuthentication(props)
+          return <MainView />
+        }} /> */}
+
       </React.Fragment>
     )
   }

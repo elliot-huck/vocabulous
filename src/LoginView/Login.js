@@ -1,16 +1,35 @@
-// This module renders the login view of the page
+import React, { Component } from "react";
 
-import React, { Component } from "react"
-import TitleCard from "./TitleCard";
-import LoginForm from "./LoginForm";
 
 export default class Login extends Component {
+  goTo(route) {
+    this.props.history.replace(`/${route}`);
+  }
+
+  login() {
+    this.props.auth.login();
+  }
+
+  logout() {
+    this.props.auth.logout();
+  }
+
   render() {
+    const { isAuthenticated } = this.props.auth;
+
     return (
-      <article>
-        <TitleCard />
-        <LoginForm logMeIn={this.props.logIn} />
-      </article>
-    )
+      <div>
+        {!isAuthenticated() && (
+          <button
+            onClick={this.login.bind(this)}
+          >
+            Log In
+          </button>
+        )}
+
+
+
+      </div>
+    );
   }
 }

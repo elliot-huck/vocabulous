@@ -27,9 +27,10 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/home');
+        this.getCurrentUser()
+        history.replace('/');
       } else if (err) {
-        history.replace('/home');
+        history.replace('/');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -43,7 +44,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   logout() {
@@ -52,7 +53,7 @@ export default class Auth {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   isAuthenticated() {
@@ -61,4 +62,46 @@ export default class Auth {
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+
+
+  getCurrentUser() {
+    return new Promise((resolve, reject) => {
+      const kennelUserId = localStorage.getItem("kennelUserId");
+
+      if (kennelUserId !== null) {
+        resolve(kennelUserId);
+      } else {
+        const accessToken = localStorage.getItem("access_token");
+        this.auth0.client.userInfo(accessToken, (err, profile) => {
+          if (profile) {
+            fetch(`http://localhost:5050/users?sub=${profile.sub}`)
+              .then(u => u.json())
+              .then(users => {
+                if (users.length) {
+                  localStorage.setItem("kennelUserId", users[0].id)
+                  resolve(users[0].id);
+                } else {
+                  fetch(`http://localhost:5050/users`, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(profile)
+                  })
+                    .then(user => user.json())
+                    .then(user => {
+                      localStorage.setItem("kennelUserId", user.id);
+                      resolve(user.id);
+                    });
+                }
+              });
+          }
+        });
+      }
+    });
+  }
+
+
+
+
 }

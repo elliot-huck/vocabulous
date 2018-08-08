@@ -10,8 +10,10 @@
 /build
 
 # API information
-/src/Api/ApiKey.js
+# /src/Api/ApiKey.js
 
+# Auth0
+# /src/Auth/auth0-variables.js
 
 # misc
 .DS_Store
