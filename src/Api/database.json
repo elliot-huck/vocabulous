@@ -12,7 +12,6 @@
       "partOfSpeech": "noun",
       "definition": "trying something to find out about it",
       "sentence": "This is only a test.",
-      "wordFrequency": 4.9,
       "id": 1
     },
     {
@@ -20,7 +19,6 @@
       "partOfSpeech": "noun",
       "definition": "a representative form or pattern",
       "sentence": "This is an example of a sentence.",
-      "wordFrequency": 4.67,
       "id": 2
     },
     {
@@ -28,7 +26,6 @@
       "partOfSpeech": "noun",
       "definition": "a group of letters that conveys meaning",
       "sentence": "This sentence has five words.",
-      "wordFrequency": 4.9,
       "id": 3
     },
     {
@@ -36,8 +33,42 @@
       "partOfSpeech": "noun",
       "definition": "the best animal",
       "sentence": "Owls are basically the cats of the bird world.",
-      "wordFrequency": 4.67,
       "id": 4
+    },
+    {
+      "word": "becomed",
+      "partOfSpeech": "verb",
+      "definition": "Simple past tense and past participle of become.",
+      "sentence": "It becomed increasingly embarassing to sort the complaints out when my first words to the complainants are usually “Sorry we were too busy to attend your burglary for the last 2 days” ….",
+      "id": 5
+    },
+    {
+      "word": "cheveril",
+      "partOfSpeech": "noun",
+      "definition": "Soft leather made of kid skin.",
+      "sentence": "Theobald's etymology of 'cheveril' is, of course quite right; -- but he is mistaken in supposing that there were no such things as gloves of chicken-skin.",
+      "id": 6
+    },
+    {
+      "word": "Melungeon",
+      "partOfSpeech": "adjective",
+      "definition": "Of or pertaining to any of several similar Mestee groups currently and historically found in the Southeastern United States, all of uncertain or disputed origin.",
+      "sentence": "It helps to know what the word Melungeon means, and helps even more to know a bit of the history, but it isn't entirely necessary -- the story is at least after you've read it once a clear presentation of such information.",
+      "id": 7
+    },
+    {
+      "word": "rhizomatous",
+      "partOfSpeech": "adjective",
+      "definition": "Having the nature or habit of a rhizome or rootstock.",
+      "sentence": "They grow and bloom from shallow, fleshy rhizomatous roots.",
+      "id": 8
+    },
+    {
+      "word": "plectrum",
+      "partOfSpeech": "noun",
+      "definition": "A small thin piece of metal, plastic, bone, or similar material, used to pluck the strings of certain instruments, such as the guitar or lute.",
+      "sentence": "The ants have two segments of their abdomen, that's the last section of their bodies, that they rub together and one of these sections has a whole series of grooves on them and the other half has something that we call the plectrum, that is a bit like the plectrum of a guitar except it itself has several grooves, and when they rub these two surfaces together it produces sort of chirruping type noises.",
+      "id": 9
     }
   ],
   "quizzes": [
@@ -55,6 +86,11 @@
       "numQuestions": 4,
       "numCorrect": 0,
       "id": 3
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 4
     }
   ],
   "userWords": [
@@ -81,6 +117,19 @@
       "wordId": 4,
       "quizFrequency": 1,
       "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "userId": "1",
+      "wordId": 8,
+      "id": 6
+    },
+    {
+      "userId": "1",
+      "wordId": 9,
+      "id": 7
     }
   ],
   "userQuizzes": [
@@ -98,6 +147,11 @@
       "userId": 1,
       "quizId": 3,
       "id": 3
+    },
+    {
+      "userId": 1,
+      "quizId": 4,
+      "id": 4
     }
   ]
 }

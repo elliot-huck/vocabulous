@@ -1,9 +1,39 @@
 import React, { Component } from 'react'
-import { Box, Title } from 'bloomer';
+import { Box, Title, Button } from 'bloomer';
+import LocalApi from "../Api/LocalApi"
 import BrowseCard from './BrowseCard';
-import { Button } from '../../node_modules/bloomer/lib/elements/Button';
 
 export default class BrowsePane extends Component {
+
+  addWordToList = (wordToAdd) => {
+    const currentUser = sessionStorage.getItem("activeUserId");
+    console.log("current user", currentUser);
+    const wordToSearch = wordToAdd.word;
+    console.log(wordToSearch);
+
+    LocalApi.searchWords(wordToSearch)
+      .then(matchingWords => {
+        console.log(matchingWords)
+
+        if (matchingWords.length === 0) {
+          console.log("That word is not in the database yet");
+
+          LocalApi.saveWord(wordToAdd)
+            .then(response => {
+              const addedWordId = response.id;
+              console.log(addedWordId);
+              const newUserWordConnection = {
+                userId: currentUser,
+                wordId: addedWordId
+              }
+              LocalApi.addUserWordConnection(newUserWordConnection)
+            })
+            
+        } else {
+          console.log("That word is in the database")
+        }
+      })
+  }
 
   render() {
     return (
@@ -14,7 +44,7 @@ export default class BrowsePane extends Component {
           const targetNumber = this.props.wordBatch.indexOf(eachWord)
           let addButton = <span></span>
           if (eachWord.definition) {
-            addButton = <Button>Add to list</Button>
+            addButton = <Button onClick={() => { this.addWordToList(eachWord) }}>Add to list</Button>
           }
           return (
             <BrowseCard

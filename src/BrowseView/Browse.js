@@ -37,10 +37,10 @@ export default class Browse extends Component {
 
   addDetails = (evt) => {
     const clickedWord = evt.target.textContent
-    console.log("clicked on ", clickedWord)
+    // console.log("clicked on ", clickedWord)
     // define object
     const indexToReplace = parseInt((evt.target.className).split(" ")[1])
-    console.log("replacing index #", indexToReplace)
+    // console.log("replacing index #", indexToReplace)
     const detailedWord = {
       word: clickedWord
     }
@@ -59,14 +59,14 @@ export default class Browse extends Component {
             const sentenceDetail = sentResponse.examples[0];
             const theActualSentence = sentenceDetail.text;
             detailedWord.sentence = theActualSentence;
-            console.log("full word object", detailedWord);
+            // console.log("full word object", detailedWord);
             // Set the state by replacing the clicked word's index with the new detail object
             this.setState((prevState) => {
-              console.log("running set state")
-              console.log(indexToReplace)
-              console.log(detailedWord)
+              // console.log("running set state")
+              // console.log(indexToReplace)
+              // console.log(detailedWord)
               prevState.currentWordBatch[indexToReplace] = detailedWord;
-              console.log(prevState)
+              // console.log(prevState)
               return { currentWordBatch: prevState.currentWordBatch }
 
             })
