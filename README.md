@@ -12,7 +12,7 @@ Vocabulous is a vocabulary-building app where users can view random words, save 
 ## Try it out yourself:
 To run this project on your own machine, do the following (requires npm):
 1. Fork/download this GitHub repository
-1. Run `$ npm install` in your terminal from the project directory ( found at `/vocabulous`)
+1. Run `$ npm install` in your terminal from the project directory (found at `/vocabulous`)
 1. Create a file named ApiKey.js in the Api directory (found at `/vocabulous/src/Api/`)
 1. Paste the code below into the ApiKey.js file, replacing "YOUR_API_KEY_HERE" with [your own Wordnik API key](https://developer.wordnik.com/ "Sign up for Wordnik API access")
 ```javascript
