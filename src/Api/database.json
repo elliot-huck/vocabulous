@@ -90,6 +90,20 @@
       "definition": "Having cadence or rhythm.",
       "sentence": "You have begun now the Plotinian ascent from multiplicity to unity, and therefore begin to perceive in the Many the clear and actual presence of the One: the changeless and absolute Life, manifesting itself in all the myriad nascent, crescent, cadent lives.",
       "id": 12
+    },
+    {
+      "word": "lapidary",
+      "partOfSpeech": "adjective",
+      "definition": "Of or pertaining to the art of cutting stones, or engraving on stones, either gems or monuments.",
+      "sentence": "In consequence, there developed two varieties of wedge-writing: the one that may be termed lapidary, used for the stone inscriptions, the official historical records, and such legal documents as were prepared with especial care; the other cursive, occurring only on legal and commercial clay tablets, and becoming more frequent as we approach the latest period of Babylonian writing, which extends to within a few decades of our era.",
+      "id": 13
+    },
+    {
+      "word": "indurate",
+      "partOfSpeech": "verb-transitive",
+      "definition": "To make hard; harden:  soil that had been indurated by extremes of climate. ",
+      "sentence": "Bertram Cornell, the indurate, cold-blooded Englishman, is struck by many arrows but remains upright and still as a statue as his comrades make their way to safety.",
+      "id": 14
     }
   ],
   "quizzes": [
@@ -216,13 +230,18 @@
     },
     {
       "userId": 1,
-      "wordId": 11,
-      "id": 5
+      "wordId": 12,
+      "id": 6
     },
     {
       "userId": 1,
-      "wordId": 12,
-      "id": 6
+      "wordId": 13,
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "wordId": 14,
+      "id": 8
     }
   ],
   "userQuizzes": [

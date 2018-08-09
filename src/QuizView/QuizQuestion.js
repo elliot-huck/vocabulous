@@ -14,7 +14,7 @@ export default class QuizQuestion extends Component {
     let possibleAnswers = [];
 
     for (let i = 0; i < answers.length; i++) {
-      possibleAnswers.push(<QuizOption option={answers[i]} />)
+      possibleAnswers.push(<QuizOption text={answers[i]} />)
     }
 
     return (

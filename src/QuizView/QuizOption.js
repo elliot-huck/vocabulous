@@ -10,7 +10,7 @@ export default class QuizOption extends Component {
   render() {
     return (
       <Tile isChild>
-        <Tag>{this.props.option}</Tag>
+        <Tag>{this.props.text}</Tag>
       </Tile>
     )
   }
