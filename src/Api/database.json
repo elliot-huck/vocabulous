@@ -9,6 +9,11 @@
       "userName": "user",
       "password": "test",
       "id": 2
+    },
+    {
+      "userName": "demo",
+      "password": "test",
+      "id": 3
     }
   ],
   "words": [

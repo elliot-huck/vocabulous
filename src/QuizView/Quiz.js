@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Columns, Box } from "bloomer"
 import QuizStats from "./QuizStats"
 import QuizPane from "./QuizPane"
+import LocalApi from '../Api/LocalApi';
 
 export default class Quiz extends Component {
 
@@ -12,7 +13,15 @@ export default class Quiz extends Component {
   }
 
   startQuiz = () => {
-    this.setState({ quizInProgress: true });
+    const currentUser = parseInt(sessionStorage.getItem("activeUserId"));
+    LocalApi.getUserWords(currentUser)
+      .then(response => {
+        if (response.length < 5) {
+          alert("You need at least 5 words in your list to take a quiz")
+        } else {
+          this.setState({ quizInProgress: true });
+        }
+      })
   }
 
   finishQuiz = () => {
