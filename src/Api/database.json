@@ -4,6 +4,11 @@
       "userName": "elliot",
       "password": "test",
       "id": 1
+    },
+    {
+      "userName": "user",
+      "password": "test",
+      "id": 2
     }
   ],
   "words": [
@@ -104,6 +109,48 @@
       "definition": "To make hard; harden:  soil that had been indurated by extremes of climate. ",
       "sentence": "Bertram Cornell, the indurate, cold-blooded Englishman, is struck by many arrows but remains upright and still as a statue as his comrades make their way to safety.",
       "id": 14
+    },
+    {
+      "word": "falconet",
+      "partOfSpeech": "noun",
+      "definition": "A small or young falcon.",
+      "sentence": "A small piece, such as in that day was employed for the defence of castles, called a falconet, was elevated above the canoes, so that the shot, passing over the heads of their inmates, might take effect upon the woods along the shore.",
+      "id": 15
+    },
+    {
+      "word": "brattle",
+      "partOfSpeech": "noun",
+      "definition": "A rattling or clattering sound.",
+      "sentence": "Links to this post bad day at the brattle worth seeing • A crane collapsed into the alley next to the Brattle Bookshop, critically injuring one crane operator and killing the other.",
+      "id": 16
+    },
+    {
+      "word": "abusion",
+      "partOfSpeech": "noun",
+      "definition": "Evil or corrupt usage; abuse; wrong; reproach; deception; cheat.",
+      "sentence": "He also put out his share of terms soon found to be of less use, like exornation, abusion, and transumption.",
+      "id": 17
+    },
+    {
+      "word": "colly",
+      "partOfSpeech": "adjective",
+      "definition": "black as coal",
+      "sentence": "\"colly\" birds, colly referring to soot or coal black.",
+      "id": 18
+    },
+    {
+      "word": "moider",
+      "partOfSpeech": "verb",
+      "definition": "to toil",
+      "sentence": "When they met it was moider … or was that some other TV couple?",
+      "id": 19
+    },
+    {
+      "word": "muliebrity",
+      "partOfSpeech": "noun",
+      "definition": "The state of being a woman.",
+      "sentence": "The malison of her muliebrity allows niddering males opportunity for oppugnant vilipend.",
+      "id": 20
     }
   ],
   "quizzes": [
@@ -201,6 +248,21 @@
       "numQuestions": 6,
       "numCorrect": 6,
       "id": 19
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 20
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 21
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 22
     }
   ],
   "userWords": [
@@ -242,6 +304,36 @@
       "userId": 1,
       "wordId": 14,
       "id": 8
+    },
+    {
+      "userId": 2,
+      "wordId": 15,
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "wordId": 16,
+      "id": 10
+    },
+    {
+      "userId": 2,
+      "wordId": 17,
+      "id": 11
+    },
+    {
+      "userId": 2,
+      "wordId": 18,
+      "id": 12
+    },
+    {
+      "userId": 2,
+      "wordId": 19,
+      "id": 13
+    },
+    {
+      "userId": 2,
+      "wordId": 20,
+      "id": 14
     }
   ],
   "userQuizzes": [
@@ -339,6 +431,21 @@
       "userId": 1,
       "quizId": 19,
       "id": 19
+    },
+    {
+      "userId": 1,
+      "quizId": 20,
+      "id": 20
+    },
+    {
+      "userId": 2,
+      "quizId": 21,
+      "id": 21
+    },
+    {
+      "userId": 2,
+      "quizId": 22,
+      "id": 22
     }
   ]
 }

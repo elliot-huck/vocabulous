@@ -77,43 +77,39 @@ export default class QuizStats extends Component {
     }
   }
 
+  // This method creates a new quiz
   createNewQuiz = () => {
+    // Defines an array that will contain all the question objects
     let newQuiz = [];
     const currentUser = sessionStorage.getItem("activeUserId")
     LocalApi.getUserWords(currentUser)
       .then(response => {
-
-        // console.log("api response", response)
+        // allWords is an array of strings containing the words of each word object retrieved from the API
         const allWords = response.map(element => {
           return element.word;
         })
-        // console.log("words", allWords)
+        // allDefinitions is an array of strings containing all the definitions of the word objects retrieved from the API
         const allDefinitions = allWords.map(word => {
           return word.definition;
         })
-        // console.log("definitions", allDefinitions)
-        allWords.forEach(wordElement => {
+        this.shuffleArray(allWords)
+        for (let i = 0; i < 5; i++) {
           const newQuestion = {};
-          newQuestion.word = wordElement.word;
-          newQuestion.rightAnswer = wordElement.definition;
+          newQuestion.word = allWords[i].word;
+          newQuestion.rightAnswer = allWords[i].definition;
 
-          const someDefinitions = [`${wordElement.definition}`];
+          const someDefinitions = [`${allWords[i].definition}`];
           while (someDefinitions.length < 4) {
-            // console.log("some", someDefinitions)
             let j = Math.floor(Math.random() * allDefinitions.length);
             if (!(someDefinitions.includes(allDefinitions[j]))) {
               someDefinitions.push(allDefinitions[j]);
-              // console.log(someDefinitions)
             }
           }
           this.shuffleArray(someDefinitions)
           newQuestion.allAnswers = someDefinitions;
-          // console.log("New question created", newQuestion);
           newQuiz.push(newQuestion);
-        })
-        // console.log("new quiz", newQuiz);
+        }
         this.shuffleArray(newQuiz);
-        // console.log("new quiz shuffle", newQuiz);
         this.setState({
           questionList: newQuiz,
           currentQuestionNumber: 0,
@@ -133,7 +129,7 @@ export default class QuizStats extends Component {
 
     while (this.state.currentQuestionNumber < this.state.questionList.length) {
       let quizButton;
-      let finalQuestion = (this.state.currentQuestionNumber === this.state.questionList.length - 1);
+      const finalQuestion = (this.state.currentQuestionNumber === this.state.questionList.length - 1);
       if (this.state.currentQuestionAnswered) {
         if (finalQuestion) {
           quizButton =
@@ -165,9 +161,9 @@ export default class QuizStats extends Component {
               increaseScore={() => this.increaseScore()}
               advance={() => (this.nextQuestion())}
             />
+
           </Tile>
           <Tile>
-
             {quizButton}
           </Tile>
         </Box>
