@@ -16,12 +16,21 @@ export default class QuizStats extends Component {
       allAnswers: ["", "", "", ""]
     }],
     currentQuestionNumber: 0,
+    currentQuestionAnswered: false,
     numCorrect: 0
+  }
+
+  answerQuestion = () => {
+    console.log("question answered")
+    this.setState({ currentQuestionAnswered: true })
   }
 
   nextQuestion = () => {
     this.setState((prevState) => {
-      return { currentQuestionNumber: prevState.currentQuestionNumber + 1 };
+      return {
+        currentQuestionNumber: prevState.currentQuestionNumber + 1,
+        currentQuestionAnswered: false
+      };
     });
   }
 
@@ -108,19 +117,41 @@ export default class QuizStats extends Component {
 
 
   render() {
-    return (
-      <Box>
-        <h1>Choose the correct definition for...</h1>
-        <QuizQuestion
-          currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
-          increaseScore={() => this.increaseScore()}
-        />
-        <QuizButton
-          questionFinished={this.state.currentQuestionNumber}
-          lastQuestion={this.state.questionList.length - 1}
-          continue={() => { this.nextQuestion() }}
-          grade={() => { this.showScore() }} />
-      </Box>
-    )
+
+    while (this.state.currentQuestionNumber < this.state.questionList.length) {
+      let quizButton;
+      if (this.state.currentQuestionAnswered) {
+        quizButton =
+          <div>
+            <QuizButton
+              questionFinished={this.state.currentQuestionNumber}
+              lastQuestion={this.state.questionList.length - 1}
+              continue={() => { this.nextQuestion() }}
+              grade={() => { this.showScore() }} />
+          </div>
+
+      } else {
+        quizButton = <div></div>
+      }
+
+      return (
+        <Box>
+          <h1>Choose the correct definition for...</h1>
+          <QuizQuestion
+            currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
+            submitAnswer={() => { this.answerQuestion() }}
+            increaseScore={() => this.increaseScore()}
+            advance={() => (this.nextQuestion())}
+          />
+          {quizButton}
+          {/* <QuizButton
+              questionFinished={this.state.currentQuestionNumber}
+              lastQuestion={this.state.questionList.length - 1}
+              continue={() => { this.nextQuestion() }}
+              grade={() => { this.showScore() }} /> */}
+        </Box>
+      )
+
+    }
   }
 }

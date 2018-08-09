@@ -122,6 +122,16 @@
       "numQuestions": 6,
       "numCorrect": 0,
       "id": 6
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 0,
+      "id": 7
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 8
     }
   ],
   "userWords": [
@@ -190,6 +200,16 @@
       "userId": 1,
       "quizId": 6,
       "id": 6
+    },
+    {
+      "userId": 1,
+      "quizId": 7,
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "quizId": 8,
+      "id": 8
     }
   ]
 }

@@ -16,10 +16,13 @@ export default class QuizQuestion extends Component {
 
       if (userSelection === this.props.currentQuestion.rightAnswer) {
         this.props.increaseScore();
-        alert("Correct! Click 'Next Question' to continue...");
+        this.props.submitAnswer()
+        console.log("Correct!")
+        // this.props.advance()
         // evt.target.classList += " is-success"
       } else {
-        alert("Try again...")
+        this.props.submitAnswer()
+        console.log("Try again...")
         // evt.target.classList += " is-danger"
       }
     }
