@@ -117,7 +117,7 @@ export default class QuizStats extends Component {
         />
         <QuizButton
           questionFinished={this.state.currentQuestionNumber}
-          lastQuestion={this.state.questionList.length}
+          lastQuestion={this.state.questionList.length - 1}
           continue={() => { this.nextQuestion() }}
           grade={() => { this.showScore() }} />
       </Box>

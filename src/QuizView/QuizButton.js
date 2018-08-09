@@ -8,7 +8,7 @@ export default class QuizButton extends Component {
 
   render() {
 
-    if (this.props.questionFinished < this.props.lastQuestion - 1) {
+    if (this.props.questionFinished < this.props.lastQuestion) {
       return (
         <Button
           isColor="primary"
