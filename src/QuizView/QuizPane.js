@@ -27,11 +27,15 @@ export default class QuizStats extends Component {
       const currentQuestion = this.state.questionList[this.state.currentQuestionNumber]
 
       if (userSelection === currentQuestion.rightAnswer) {
+        alert("Correct! Nice job!")
         this.setState((prevState) => {
           return {
             numCorrect: prevState.numCorrect + 1
           };
         });
+      } else {
+        alert("Wrong! Better luck next time...")
+
       }
 
       this.setState({ currentQuestionAnswered: true })
@@ -69,7 +73,7 @@ export default class QuizStats extends Component {
       })
   }
 
-  // THis method takes an array and shuffles its elements to different indices
+  // This method takes an array and shuffles its elements to different indices
   shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
