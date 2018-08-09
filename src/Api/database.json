@@ -132,6 +132,61 @@
       "numQuestions": 6,
       "numCorrect": 6,
       "id": 8
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 3,
+      "id": 9
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 1,
+      "id": 10
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 1,
+      "id": 11
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 1,
+      "id": 12
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 13
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 14
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 15
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 16
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 3,
+      "id": 17
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 18
+    },
+    {
+      "numQuestions": 6,
+      "numCorrect": 6,
+      "id": 19
     }
   ],
   "userWords": [
@@ -210,6 +265,61 @@
       "userId": 1,
       "quizId": 8,
       "id": 8
+    },
+    {
+      "userId": 1,
+      "quizId": 9,
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "quizId": 10,
+      "id": 10
+    },
+    {
+      "userId": 1,
+      "quizId": 11,
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "quizId": 12,
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "quizId": 13,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "quizId": 14,
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "quizId": 15,
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "quizId": 16,
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "quizId": 17,
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "quizId": 18,
+      "id": 18
+    },
+    {
+      "userId": 1,
+      "quizId": 19,
+      "id": 19
     }
   ]
 }

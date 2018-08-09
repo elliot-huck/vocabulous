@@ -1,7 +1,7 @@
 // This module renders the quiz that is currently being taken
 
 import React, { Component } from 'react';
-import { Box } from "bloomer";
+import { Box, Tile } from "bloomer";
 import QuizQuestion from "./QuizQuestion"
 import QuizButton from "./QuizButton"
 import LocalApi from '../Api/LocalApi';
@@ -20,9 +20,22 @@ export default class QuizStats extends Component {
     numCorrect: 0
   }
 
-  answerQuestion = () => {
-    console.log("question answered")
-    this.setState({ currentQuestionAnswered: true })
+
+  checkAnswer = (evt) => {
+    if (evt.target.tagName === "SPAN" && !this.state.currentQuestionAnswered) {
+      const userSelection = evt.target.textContent;
+      const currentQuestion = this.state.questionList[this.state.currentQuestionNumber]
+
+      if (userSelection === currentQuestion.rightAnswer) {
+        this.setState((prevState) => {
+          return {
+            numCorrect: prevState.numCorrect + 1
+          };
+        });
+      }
+
+      this.setState({ currentQuestionAnswered: true })
+    }
   }
 
   nextQuestion = () => {
@@ -31,12 +44,6 @@ export default class QuizStats extends Component {
         currentQuestionNumber: prevState.currentQuestionNumber + 1,
         currentQuestionAnswered: false
       };
-    });
-  }
-
-  increaseScore = () => {
-    this.setState((prevState) => {
-      return { numCorrect: prevState.numCorrect + 1 };
     });
   }
 
@@ -62,6 +69,7 @@ export default class QuizStats extends Component {
       })
   }
 
+  // THis method takes an array and shuffles its elements to different indices
   shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -98,7 +106,7 @@ export default class QuizStats extends Component {
               // console.log(someDefinitions)
             }
           }
-
+          this.shuffleArray(someDefinitions)
           newQuestion.allAnswers = someDefinitions;
           // console.log("New question created", newQuestion);
           newQuiz.push(newQuestion);
@@ -106,7 +114,12 @@ export default class QuizStats extends Component {
         // console.log("new quiz", newQuiz);
         this.shuffleArray(newQuiz);
         // console.log("new quiz shuffle", newQuiz);
-        this.setState({ questionList: newQuiz })
+        this.setState({
+          questionList: newQuiz,
+          currentQuestionNumber: 0,
+          currentQuestionAnswered: false,
+          numCorrect: 0
+        })
       })
   }
 
@@ -120,35 +133,43 @@ export default class QuizStats extends Component {
 
     while (this.state.currentQuestionNumber < this.state.questionList.length) {
       let quizButton;
+      let finalQuestion = (this.state.currentQuestionNumber === this.state.questionList.length - 1);
       if (this.state.currentQuestionAnswered) {
-        quizButton =
-          <div>
+        if (finalQuestion) {
+          quizButton =
             <QuizButton
-              questionFinished={this.state.currentQuestionNumber}
-              lastQuestion={this.state.questionList.length - 1}
-              continue={() => { this.nextQuestion() }}
-              grade={() => { this.showScore() }} />
-          </div>
+              buttonColor="info"
+              buttonText="End Quiz"
+              buttonClick={() => { this.showScore() }}
+            />
+        } else {
+          quizButton =
+            <QuizButton
+              buttonColor="primary"
+              buttonText="Next Question"
+              buttonClick={() => { this.nextQuestion() }}
+            />
+        }
 
-      } else {
-        quizButton = <div></div>
+
       }
 
       return (
-        <Box>
+        <Box onClick={(evt) => { this.checkAnswer(evt) }}>
           <h1>Choose the correct definition for...</h1>
-          <QuizQuestion
-            currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
-            submitAnswer={() => { this.answerQuestion() }}
-            increaseScore={() => this.increaseScore()}
-            advance={() => (this.nextQuestion())}
-          />
-          {quizButton}
-          {/* <QuizButton
-              questionFinished={this.state.currentQuestionNumber}
-              lastQuestion={this.state.questionList.length - 1}
-              continue={() => { this.nextQuestion() }}
-              grade={() => { this.showScore() }} /> */}
+          <Tile>
+
+            <QuizQuestion
+              currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
+              submitAnswer={() => { this.answerQuestion() }}
+              increaseScore={() => this.increaseScore()}
+              advance={() => (this.nextQuestion())}
+            />
+          </Tile>
+          <Tile>
+
+            {quizButton}
+          </Tile>
         </Box>
       )
 
