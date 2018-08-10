@@ -156,6 +156,13 @@
       "definition": "The state of being a woman.",
       "sentence": "The malison of her muliebrity allows niddering males opportunity for oppugnant vilipend.",
       "id": 20
+    },
+    {
+      "word": "candlewood",
+      "partOfSpeech": "noun",
+      "definition": "Any of several trees or shrubs yielding a usually resinous wood.",
+      "sentence": "Tawnos was stripped to the waist and bending a thick spar of candlewood along a graceful line chalked against one wall.",
+      "id": 21
     }
   ],
   "quizzes": [
@@ -278,6 +285,16 @@
       "numQuestions": 5,
       "numCorrect": 4,
       "id": 24
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 3,
+      "id": 25
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 2,
+      "id": 26
     }
   ],
   "userWords": [
@@ -471,6 +488,16 @@
       "userId": 1,
       "quizId": 24,
       "id": 24
+    },
+    {
+      "userId": 1,
+      "quizId": 25,
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "quizId": 26,
+      "id": 26
     }
   ]
 }

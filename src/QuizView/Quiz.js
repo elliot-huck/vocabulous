@@ -13,7 +13,7 @@ export default class Quiz extends Component {
   }
 
   startQuiz = () => {
-    const currentUser = parseInt(sessionStorage.getItem("activeUserId"));
+    const currentUser = parseInt(sessionStorage.getItem("activeUserId"), 10);
     LocalApi.getUserWords(currentUser)
       .then(response => {
         if (response.length < 5) {

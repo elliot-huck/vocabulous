@@ -15,42 +15,54 @@ export default class QuizStats extends Component {
       rightAnswer: "",
       allAnswers: ["", "", "", ""]
     }],
+    optionColors: ["", "", "", ""],
     currentQuestionNumber: 0,
     currentQuestionAnswered: false,
     numCorrect: 0
   }
 
-
+  // Checks a users answer to see if it was correct
   checkAnswer = (evt) => {
     if (evt.target.tagName === "SPAN" && !this.state.currentQuestionAnswered) {
       const userSelection = evt.target.textContent;
       const currentQuestion = this.state.questionList[this.state.currentQuestionNumber]
+      const userSelectionIndex = currentQuestion.allAnswers.indexOf(userSelection)
+      const rightAnswerIndex = currentQuestion.allAnswers.indexOf(currentQuestion.rightAnswer)
+      console.log("user answer #", userSelectionIndex)
+      console.log("correct answer #", rightAnswerIndex)
+      let displayColors = ["", "", "", ""]
 
       if (userSelection === currentQuestion.rightAnswer) {
-        alert("Correct! Nice job!")
+        // alert("Correct! Nice job!")
         this.setState((prevState) => {
           return {
             numCorrect: prevState.numCorrect + 1
           };
         });
       } else {
-        alert("Wrong! Better luck next time...")
-
+        displayColors[userSelectionIndex] = "is-danger"
+        // alert("Wrong! Better luck next time...")
       }
-
-      this.setState({ currentQuestionAnswered: true })
+      displayColors[rightAnswerIndex] = "is-success"
+      this.setState({
+        currentQuestionAnswered: true,
+        optionColors: displayColors
+      })
     }
   }
 
+  // Advances to the next question in the quiz
   nextQuestion = () => {
     this.setState((prevState) => {
       return {
         currentQuestionNumber: prevState.currentQuestionNumber + 1,
-        currentQuestionAnswered: false
+        currentQuestionAnswered: false,
+        optionColors: ["","","",""]
       };
     });
   }
 
+  // Shows the user their score and then saves the quiz in the local API
   showScore = () => {
     const rightAnswers = this.state.numCorrect
     const totalQuestions = this.state.questionList.length
@@ -60,7 +72,6 @@ export default class QuizStats extends Component {
     }
     LocalApi.saveQuizResults(newQuiz)
       .then(response => {
-        // console.log("response", response)
         const newConnection = {
           userId: parseInt(sessionStorage.getItem("activeUserId"), 10),
           quizId: response.id
@@ -73,7 +84,7 @@ export default class QuizStats extends Component {
       })
   }
 
-  // This method takes an array and shuffles its elements to different indices
+  // Takes an array and shuffles its elements to different indices
   shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -81,7 +92,7 @@ export default class QuizStats extends Component {
     }
   }
 
-  // This method creates a new quiz
+  // Creates a new quiz
   createNewQuiz = () => {
     // Defines an array that will contain all the question objects
     let newQuiz = [];
@@ -156,20 +167,18 @@ export default class QuizStats extends Component {
 
       return (
         <Box onClick={(evt) => { this.checkAnswer(evt) }}>
-          <h1>Choose the correct definition for...</h1>
+
+          <h1>Click on the correct definition for...</h1>
           <Tile>
-
             <QuizQuestion
-              currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
-              submitAnswer={() => { this.answerQuestion() }}
-              increaseScore={() => this.increaseScore()}
-              advance={() => (this.nextQuestion())}
-            />
-
+              colorList={this.state.optionColors}
+              currentQuestion={this.state.questionList[this.state.currentQuestionNumber]} />
           </Tile>
+
           <Tile>
             {quizButton}
           </Tile>
+
         </Box>
       )
 
