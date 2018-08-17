@@ -32,7 +32,7 @@
     {
       "word": "example",
       "partOfSpeech": "noun",
-      "definition": "a representative form or pattern",
+      "definition": "A representative form or pattern.",
       "sentence": "This is an example of a sentence.",
       "id": 2
     },
@@ -46,7 +46,7 @@
     {
       "word": "owl",
       "partOfSpeech": "noun",
-      "definition": "the best animal",
+      "definition": "The best animal.",
       "sentence": "Owls are basically the cats of the bird world.",
       "id": 4
     },
@@ -203,6 +203,27 @@
       "definition": "smack, taste",
       "sentence": "The monarch was to see bright raiment, flowers, pageantry, smiling faces only; to hear only the voices of singing men and singing women; no smatch of the abounding wormwood of life was to touch his lip, no glimpse of its we to disturb his serenity.",
       "id": 26
+    },
+    {
+      "word": "coulisse",
+      "partOfSpeech": "noun",
+      "definition": "A grooved timber in which something slides.",
+      "sentence": "Thus, the break between Lumumba and UN secretary-general HammarskjÃ¶ld also plays a crucial role in the fall of the Congolese prime minister, on the one hand because it incites Lumumba to seek (openly) the support of the Soviet Union and, on the other, because it incites the United States to organize (behind the scenes) [en coulisse] active opposition to Lumumba (including the elaboration of the first plans for physical elimination).",
+      "id": 27
+    },
+    {
+      "word": "sternutatory",
+      "partOfSpeech": "adjective",
+      "definition": "Causing or tending to cause sneezing.",
+      "sentence": "To procure the expulsion of the secundines, apply a sternutatory, and shut the nostrils and mouth.",
+      "id": 28
+    },
+    {
+      "word": "annulet",
+      "partOfSpeech": "noun",
+      "definition": "A ringlike molding around the capital of a pillar.",
+      "sentence": "The whole surrounded by thirteen blue stars in the form of an annulet with one point of each star outward on the imaginary radiating center lines.",
+      "id": 29
     }
   ],
   "quizzes": [
@@ -350,26 +371,24 @@
       "numQuestions": 5,
       "numCorrect": 5,
       "id": 29
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 30
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 31
     }
   ],
   "userWords": [
     {
       "userId": 1,
-      "wordId": 1,
-      "quizFrequency": 1,
-      "id": 1
-    },
-    {
-      "userId": 1,
       "wordId": 2,
       "quizFrequency": 1,
       "id": 2
-    },
-    {
-      "userId": 1,
-      "wordId": 3,
-      "quizFrequency": 1,
-      "id": 3
     },
     {
       "userId": 1,
@@ -381,16 +400,6 @@
       "userId": 1,
       "wordId": 12,
       "id": 6
-    },
-    {
-      "userId": 1,
-      "wordId": 13,
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "wordId": 14,
-      "id": 8
     },
     {
       "userId": 2,
@@ -446,6 +455,21 @@
       "userId": 4,
       "wordId": 26,
       "id": 19
+    },
+    {
+      "userId": 1,
+      "wordId": 27,
+      "id": 20
+    },
+    {
+      "userId": 1,
+      "wordId": 28,
+      "id": 21
+    },
+    {
+      "userId": 1,
+      "wordId": 29,
+      "id": 22
     }
   ],
   "userQuizzes": [
@@ -593,6 +617,16 @@
       "userId": 4,
       "quizId": 29,
       "id": 29
+    },
+    {
+      "userId": 1,
+      "quizId": 30,
+      "id": 30
+    },
+    {
+      "userId": 1,
+      "quizId": 31,
+      "id": 31
     }
   ]
 }
