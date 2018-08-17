@@ -20,7 +20,6 @@ export default class QuizStats extends Component {
 
   render() {
     let isPlural = "zes"
-    console.log(this.state.quizzesTaken)
     if (this.state.quizzesTaken === 1) {
       isPlural = ""
     }
