@@ -224,6 +224,13 @@
       "definition": "A ringlike molding around the capital of a pillar.",
       "sentence": "The whole surrounded by thirteen blue stars in the form of an annulet with one point of each star outward on the imaginary radiating center lines.",
       "id": 29
+    },
+    {
+      "word": "katzenjammer",
+      "partOfSpeech": "noun",
+      "definition": "A loud, discordant noise.",
+      "sentence": "(Alas! as I was to learn at a later period, intellectual intoxication too. has its katzenjammer.) « Table of contents",
+      "id": 30
     }
   ],
   "quizzes": [
@@ -470,6 +477,11 @@
       "userId": 1,
       "wordId": 29,
       "id": 22
+    },
+    {
+      "userId": 1,
+      "wordId": 30,
+      "id": 23
     }
   ],
   "userQuizzes": [
