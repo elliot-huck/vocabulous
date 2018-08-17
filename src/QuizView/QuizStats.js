@@ -19,10 +19,15 @@ export default class QuizStats extends Component {
   }
 
   render() {
+    let isPlural = "zes"
+    console.log(this.state.quizzesTaken)
+    if (this.state.quizzesTaken === 1) {
+      isPlural = ""
+    }
     return (
       <Column>
         <Card>
-          <Title>You've taken {this.state.quizzesTaken} quizzes! Would you like to start a new one?</Title>
+          <Title>You've taken {this.state.quizzesTaken} quiz{isPlural}! Would you like to start a new one?</Title>
           <Button isColor="primary" onClick={() => { this.props.begin() }}>Start quiz!</Button>
         </Card>
       </Column>
