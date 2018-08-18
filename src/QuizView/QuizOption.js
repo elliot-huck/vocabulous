@@ -5,12 +5,12 @@ import { Tile, Tag } from "bloomer"
 
 export default class QuizOption extends Component {
 
- 
+
 
   render() {
     return (
       <Tile isChild>
-        <Tag>{this.props.option}</Tag>
+        <Tag className={this.props.color}>{this.props.text}</Tag>
       </Tile>
     )
   }

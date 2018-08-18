@@ -1,7 +1,7 @@
 // This module renders the quiz that is currently being taken
 
 import React, { Component } from 'react';
-import { Box } from "bloomer";
+import { Box, Tile } from "bloomer";
 import QuizQuestion from "./QuizQuestion"
 import QuizButton from "./QuizButton"
 import LocalApi from '../Api/LocalApi';
@@ -15,22 +15,54 @@ export default class QuizStats extends Component {
       rightAnswer: "",
       allAnswers: ["", "", "", ""]
     }],
+    optionColors: ["", "", "", ""],
     currentQuestionNumber: 0,
+    currentQuestionAnswered: false,
     numCorrect: 0
   }
 
+  // Checks a users answer to see if it was correct
+  checkAnswer = (evt) => {
+    if (evt.target.tagName === "SPAN" && !this.state.currentQuestionAnswered) {
+      const userSelection = evt.target.textContent;
+      const currentQuestion = this.state.questionList[this.state.currentQuestionNumber]
+      const userSelectionIndex = currentQuestion.allAnswers.indexOf(userSelection)
+      const rightAnswerIndex = currentQuestion.allAnswers.indexOf(currentQuestion.rightAnswer)
+      console.log("user answer #", userSelectionIndex)
+      console.log("correct answer #", rightAnswerIndex)
+      let displayColors = ["", "", "", ""]
+
+      if (userSelection === currentQuestion.rightAnswer) {
+        // alert("Correct! Nice job!")
+        this.setState((prevState) => {
+          return {
+            numCorrect: prevState.numCorrect + 1
+          };
+        });
+      } else {
+        displayColors[userSelectionIndex] = "is-danger"
+        // alert("Wrong! Better luck next time...")
+      }
+      displayColors[rightAnswerIndex] = "is-success"
+      this.setState({
+        currentQuestionAnswered: true,
+        optionColors: displayColors
+      })
+    }
+  }
+
+  // Advances to the next question in the quiz
   nextQuestion = () => {
     this.setState((prevState) => {
-      return { currentQuestionNumber: prevState.currentQuestionNumber + 1 };
+      return {
+        currentQuestionNumber: prevState.currentQuestionNumber + 1,
+        currentQuestionAnswered: false,
+        optionColors: ["","","",""]
+      };
     });
   }
 
-  increaseScore = () => {
-    this.setState((prevState) => {
-      return { numCorrect: prevState.numCorrect + 1 };
-    });
-  }
-
+  // Shows the user their score and then saves the quiz in the local API
   showScore = () => {
     const rightAnswers = this.state.numCorrect
     const totalQuestions = this.state.questionList.length
@@ -40,7 +72,6 @@ export default class QuizStats extends Component {
     }
     LocalApi.saveQuizResults(newQuiz)
       .then(response => {
-        // console.log("response", response)
         const newConnection = {
           userId: parseInt(sessionStorage.getItem("activeUserId"), 10),
           quizId: response.id
@@ -53,6 +84,7 @@ export default class QuizStats extends Component {
       })
   }
 
+  // Takes an array and shuffles its elements to different indices
   shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -60,44 +92,45 @@ export default class QuizStats extends Component {
     }
   }
 
+  // Creates a new quiz
   createNewQuiz = () => {
+    // Defines an array that will contain all the question objects
     let newQuiz = [];
     const currentUser = sessionStorage.getItem("activeUserId")
     LocalApi.getUserWords(currentUser)
       .then(response => {
-
-        // console.log("api response", response)
+        // allWords is an array of strings containing the words of each word object retrieved from the API
         const allWords = response.map(element => {
           return element.word;
         })
-        // console.log("words", allWords)
+        // allDefinitions is an array of strings containing all the definitions of the word objects retrieved from the API
         const allDefinitions = allWords.map(word => {
           return word.definition;
         })
-        // console.log("definitions", allDefinitions)
-        allWords.forEach(wordElement => {
+        this.shuffleArray(allWords)
+        for (let i = 0; i < 5; i++) {
           const newQuestion = {};
-          newQuestion.word = wordElement.word;
-          newQuestion.rightAnswer = wordElement.definition;
+          newQuestion.word = allWords[i].word;
+          newQuestion.rightAnswer = allWords[i].definition;
 
-          const someDefinitions = [`${wordElement.definition}`];
+          const someDefinitions = [`${allWords[i].definition}`];
           while (someDefinitions.length < 4) {
-            // console.log("some", someDefinitions)
             let j = Math.floor(Math.random() * allDefinitions.length);
             if (!(someDefinitions.includes(allDefinitions[j]))) {
               someDefinitions.push(allDefinitions[j]);
-              // console.log(someDefinitions)
             }
           }
-
+          this.shuffleArray(someDefinitions)
           newQuestion.allAnswers = someDefinitions;
-          // console.log("New question created", newQuestion);
           newQuiz.push(newQuestion);
-        })
-        // console.log("new quiz", newQuiz);
+        }
         this.shuffleArray(newQuiz);
-        // console.log("new quiz shuffle", newQuiz);
-        this.setState({ questionList: newQuiz })
+        this.setState({
+          questionList: newQuiz,
+          currentQuestionNumber: 0,
+          currentQuestionAnswered: false,
+          numCorrect: 0
+        })
       })
   }
 
@@ -108,19 +141,47 @@ export default class QuizStats extends Component {
 
 
   render() {
-    return (
-      <Box>
-        <h1>Choose the correct definition for...</h1>
-        <QuizQuestion
-          currentQuestion={this.state.questionList[this.state.currentQuestionNumber]}
-          increaseScore={() => this.increaseScore()}
-        />
-        <QuizButton
-          questionFinished={this.state.currentQuestionNumber}
-          lastQuestion={this.state.questionList.length}
-          continue={() => { this.nextQuestion() }}
-          grade={() => { this.showScore() }} />
-      </Box>
-    )
+
+    while (this.state.currentQuestionNumber < this.state.questionList.length) {
+      let quizButton;
+      const finalQuestion = (this.state.currentQuestionNumber === this.state.questionList.length - 1);
+      if (this.state.currentQuestionAnswered) {
+        if (finalQuestion) {
+          quizButton =
+            <QuizButton
+              buttonColor="info"
+              buttonText="End Quiz"
+              buttonClick={() => { this.showScore() }}
+            />
+        } else {
+          quizButton =
+            <QuizButton
+              buttonColor="primary"
+              buttonText="Next Question"
+              buttonClick={() => { this.nextQuestion() }}
+            />
+        }
+
+
+      }
+
+      return (
+        <Box onClick={(evt) => { this.checkAnswer(evt) }}>
+
+          <h1>Click on the correct definition for...</h1>
+          <Tile>
+            <QuizQuestion
+              colorList={this.state.optionColors}
+              currentQuestion={this.state.questionList[this.state.currentQuestionNumber]} />
+          </Tile>
+
+          <Tile>
+            {quizButton}
+          </Tile>
+
+        </Box>
+      )
+
+    }
   }
 }

@@ -11,16 +11,16 @@ export default class Browse extends Component {
   state = {
     currentWordBatch: [
       {
-        word: "test"
+        word: ""
       },
       {
-        word: "example"
+        word: ""
       },
       {
-        word: "word"
+        word: ""
       },
       {
-        word: "owl"
+        word: ""
       }]
   }
 
