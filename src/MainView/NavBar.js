@@ -6,10 +6,29 @@ import { Tabs, TabList, Tab } from "bloomer"
 
 export default class NavBar extends Component {
 
+  changeActiveTab = (evt) => {
+    let clickedTab;
+    if (evt.target.tagName === "LI") {
+      clickedTab = evt.target;
+    } else if (evt.target.tagName === "A") {
+      clickedTab = evt.target.parentNode
+    }
+    
+    const allTabs = evt.target.parentNode.parentNode.childNodes;
+    allTabs.forEach(tab => {
+      if (tab === clickedTab) {
+        tab.classList += " is-active"
+      } else {
+        tab.classList = ""
+      }
+    });
+    // evt.target.parentNode.classList += " is-active"
+  }
+
   render() {
     return (
       <Tabs isBoxed isFullWidth>
-        <TabList>
+        <TabList onClick={(evt) => { this.changeActiveTab(evt) }}>
 
           <Tab>
             <Link to="/browse">Browse</Link>

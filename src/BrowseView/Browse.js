@@ -34,6 +34,7 @@ export default class Browse extends Component {
       })
   }
 
+  // Gets detail info for the word clicked and then updates the word object at that index in state so the BrowsePane has props to render the BrowseCard correctly
   addDetails = (evt) => {
     const clickedWord = evt.target.textContent
     // define object

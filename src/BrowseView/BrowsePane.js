@@ -50,14 +50,15 @@ export default class BrowsePane extends Component {
   render() {
     return (
       <Box>
-
         <span>Click on a word to see its definition and add it to your list</span>
+
         {this.props.wordBatch.map(eachWord => {
           const targetNumber = this.props.wordBatch.indexOf(eachWord)
-          let addButton = <span></span>
+          let addButton;
           if (eachWord.definition) {
             addButton = <Button isColor="primary" onClick={() => { this.addWordToList(eachWord) }}>Add to list</Button>
           }
+
           return (
             <BrowseCard
               key={targetNumber}
@@ -66,7 +67,6 @@ export default class BrowsePane extends Component {
               show={eachWord}
               button={addButton} />
           )
-
         })}
 
       </Box>
