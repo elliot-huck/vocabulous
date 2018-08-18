@@ -231,6 +231,27 @@
       "definition": "A loud, discordant noise.",
       "sentence": "(Alas! as I was to learn at a later period, intellectual intoxication too. has its katzenjammer.) « Table of contents",
       "id": 30
+    },
+    {
+      "word": "loricate",
+      "partOfSpeech": "adjective",
+      "definition": "Possessing an enclosing shell or test.",
+      "sentence": "Behind him, to his left, stood a larger than life-sized loricate statue of “Dama Balboa,” the personification of the nation and the Republic.",
+      "id": 31
+    },
+    {
+      "word": "alexandrine",
+      "partOfSpeech": "noun",
+      "definition": "A line of English verse composed in iambic hexameter, usually with a caesura after the third foot.",
+      "sentence": "The 6-stress line is called the alexandrine (probably from the name of an Old French poem in this metre).",
+      "id": 32
+    },
+    {
+      "word": "macle",
+      "partOfSpeech": "noun",
+      "definition": "Chiastolite.",
+      "sentence": "Other Canadians cut from the semi-finals were Veronica Penny, 11, of Hamilton, and Claudine Broussard, 13, Port Hawkesbury, N.S. Penny spelled a type of crystal called macle as maquelle.",
+      "id": 33
     }
   ],
   "quizzes": [
@@ -482,6 +503,11 @@
       "userId": 1,
       "wordId": 30,
       "id": 23
+    },
+    {
+      "userId": 1,
+      "wordId": 15,
+      "id": 24
     }
   ],
   "userQuizzes": [

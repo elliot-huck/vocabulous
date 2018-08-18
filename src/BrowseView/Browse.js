@@ -76,7 +76,7 @@ export default class Browse extends Component {
     return (
       <React.Fragment>
 
-        <Button onClick={() => { this.newWordBatch() }}>Get different words</Button>
+        <Button isColor="primary" onClick={() => { this.newWordBatch() }}>Get different words</Button>
         <BrowsePane
           wordBatch={this.state.currentWordBatch}
           showDetails={(evt) => { this.addDetails(evt) }}
