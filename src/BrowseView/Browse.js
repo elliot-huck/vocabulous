@@ -34,6 +34,7 @@ export default class Browse extends Component {
       })
   }
 
+  // Gets detail info for the word clicked and then updates the word object at that index in state so the BrowsePane has props to render the BrowseCard correctly
   addDetails = (evt) => {
     const clickedWord = evt.target.textContent
     // define object
@@ -76,7 +77,7 @@ export default class Browse extends Component {
     return (
       <React.Fragment>
 
-        <Button onClick={() => { this.newWordBatch() }}>Get different words</Button>
+        <Button isColor="primary" onClick={() => { this.newWordBatch() }}>Get different words</Button>
         <BrowsePane
           wordBatch={this.state.currentWordBatch}
           showDetails={(evt) => { this.addDetails(evt) }}
