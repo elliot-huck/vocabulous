@@ -308,6 +308,13 @@
       "definition": "Having a bilaterally symmetrical corolla somewhat resembling a butterfly, characteristic of most plants of the pea family.",
       "sentence": "PapilionaceæAn order of Plants (see LEGUMINOSÆ), The flowers of these plants are called papilionaceous, or butterfly-like, from the fancied resemblance of the expanded superior petals to the wings of a butterfly.",
       "id": 41
+    },
+    {
+      "word": "inceptive",
+      "partOfSpeech": "adjective",
+      "definition": "Incipient; beginning.",
+      "sentence": "Because I spent a good two minutes weighing the pros and cons of each, I now realize that I was wholly taken advantage of by inceptive in the Christopher Nolan sense of the word marketing.",
+      "id": 42
     }
   ],
   "quizzes": [
@@ -564,6 +571,11 @@
       "userId": 1,
       "wordId": 15,
       "id": 24
+    },
+    {
+      "userId": 1,
+      "wordId": 42,
+      "id": 25
     }
   ],
   "userQuizzes": [
