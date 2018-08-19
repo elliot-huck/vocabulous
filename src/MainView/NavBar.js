@@ -6,6 +6,7 @@ import { Tabs, TabList, Tab } from "bloomer"
 
 export default class NavBar extends Component {
 
+  // Changes the styling on the active tab when clicked
   changeActiveTab = (evt) => {
     let clickedTab;
     if (evt.target.tagName === "LI") {
@@ -13,7 +14,7 @@ export default class NavBar extends Component {
     } else if (evt.target.tagName === "A") {
       clickedTab = evt.target.parentNode
     }
-    
+
     const allTabs = evt.target.parentNode.parentNode.childNodes;
     allTabs.forEach(tab => {
       if (tab === clickedTab) {
@@ -22,7 +23,6 @@ export default class NavBar extends Component {
         tab.classList = ""
       }
     });
-    // evt.target.parentNode.classList += " is-active"
   }
 
   render() {
