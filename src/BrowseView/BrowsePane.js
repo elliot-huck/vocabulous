@@ -5,7 +5,9 @@ import BrowseCard from './BrowseCard';
 
 export default class BrowsePane extends Component {
 
-  addWordToList = (wordToAdd) => {
+  addWordToList = (evt, wordToAdd) => {
+    console.log(evt.target)
+    const button = evt.target;
     const currentUser = parseInt(sessionStorage.getItem("activeUserId"), 10);
     const wordToSearch = wordToAdd.word;
 
@@ -24,7 +26,8 @@ export default class BrowsePane extends Component {
               }
               // Adds the word from local database to the user's list
               LocalApi.addUserWordConnection(newUserWordConnection)
-
+              button.classList += " is-info"
+              button.textContent = "Added!"
             })
 
         } else { // The word is already in the local database
@@ -39,6 +42,9 @@ export default class BrowsePane extends Component {
                   wordId: wordId
                 }
                 LocalApi.addUserWordConnection(newUserWordConnection)
+                button.classList += " is-info"
+                button.textContent = "Added!"
+
               } else { // The user does have the word
                 alert("You already have that word in your list")
               }
@@ -56,7 +62,7 @@ export default class BrowsePane extends Component {
           const targetNumber = this.props.wordBatch.indexOf(eachWord)
           let addButton;
           if (eachWord.definition) {
-            addButton = <Button isColor="primary" onClick={() => { this.addWordToList(eachWord) }}>Add to list</Button>
+            addButton = <Button isColor="primary" onClick={(evt) => { this.addWordToList(evt, eachWord) }}>Add to list</Button>
           }
 
           return (
