@@ -1,4 +1,4 @@
-// This module displays stats on past quizzes. Right now, this is limited to the number of quizzes taken by the current user
+// This module displays stats on past quizzes. Right now, this is limited to the number of quizzes taken by the current user. It only renders if the state of Quiz indicates that a quiz is not in progress
 
 import React, { Component } from 'react';
 import { Title, Card, Column, Button} from "bloomer"
@@ -19,6 +19,7 @@ export default class QuizStats extends Component {
   }
 
   render() {
+    // Makes sure that it won't display "1 quizzes" taken
     let isPlural = "zes"
     if (this.state.quizzesTaken === 1) {
       isPlural = ""
@@ -26,7 +27,8 @@ export default class QuizStats extends Component {
     return (
       <Column>
         <Card>
-          <Title>You've taken {this.state.quizzesTaken} quiz{isPlural}! Would you like to start a new one?</Title>
+          <Title>You've taken {this.state.quizzesTaken} quiz{isPlural}!</Title>
+          <Title>Would you like to start a new one?</Title>
           <Button isColor="primary" onClick={() => { this.props.begin() }}>Start quiz!</Button>
         </Card>
       </Column>

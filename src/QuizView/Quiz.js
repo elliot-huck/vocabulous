@@ -28,8 +28,6 @@ export default class Quiz extends Component {
     this.setState({ quizInProgress: false })
   }
 
-
-
   render() {
     if (this.state.quizInProgress) {
       return (

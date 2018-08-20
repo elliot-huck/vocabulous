@@ -1,4 +1,4 @@
-// This module renders the quiz that is currently being taken
+// This module renders the quiz that is currently being taken. It only renders if the state of Quiz indicates that a quiz is in progress
 
 import React, { Component } from 'react';
 import { Box, Tile } from "bloomer";
@@ -33,7 +33,6 @@ export default class QuizStats extends Component {
       let displayColors = ["", "", "", ""]
 
       if (userSelection === currentQuestion.rightAnswer) {
-        // alert("Correct! Nice job!")
         this.setState((prevState) => {
           return {
             numCorrect: prevState.numCorrect + 1
@@ -41,7 +40,6 @@ export default class QuizStats extends Component {
         });
       } else {
         displayColors[userSelectionIndex] = "is-danger"
-        // alert("Wrong! Better luck next time...")
       }
       displayColors[rightAnswerIndex] = "is-success"
       this.setState({
