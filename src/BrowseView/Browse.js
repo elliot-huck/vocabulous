@@ -43,25 +43,25 @@ export default class Browse extends Component {
       word: clickedWord
     }
 
-    // Call external API for definitions
+    // Call external API for the word's definition
     ExternalApi.getWordDefinition(clickedWord)
       .then(defResponse => {
-
         const definitionDetail = defResponse[0].text;
         const partOfSpeechDetail = defResponse[0].partOfSpeech;
         detailedWord.partOfSpeech = partOfSpeechDetail
         detailedWord.definition = definitionDetail;
+
         // Call external API for the example sentence
         ExternalApi.getWordSentence(clickedWord)
           .then(sentResponse => {
             const sentenceDetail = sentResponse.examples[0];
             const theActualSentence = sentenceDetail.text;
             detailedWord.sentence = theActualSentence;
+
             // Set the state by replacing the clicked word's index with the new detail object
             this.setState((prevState) => {
               prevState.currentWordBatch[indexToReplace] = detailedWord;
               return { currentWordBatch: prevState.currentWordBatch }
-
             })
           })
       })
