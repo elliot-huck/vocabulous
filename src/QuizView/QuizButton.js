@@ -5,10 +5,13 @@ import { Button } from "bloomer"
 
 export default class QuizButton extends Component {
 
-
   render() {
     return (
-      <Button isColor={this.props.buttonColor} onClick={() => {this.props.buttonClick()}}>{this.props.buttonText}</Button>
+      <Button
+        isColor={this.props.buttonColor}
+        onClick={() => { this.props.buttonClick() }}>
+        {this.props.buttonText}
+      </Button>
     )
   }
 }

@@ -9,13 +9,13 @@ import LocalApi from '../Api/LocalApi';
 export default class QuizStats extends Component {
 
   state = {
-    // This blank question object is to keep React from freaking out when it tries to mount question 1
+    // This blank question object is a placeholder so React has something blank to render when it tries to mount question 1
     questionList: [{
       word: "",
       rightAnswer: "",
-      allAnswers: ["", "", "", ""]
+      allAnswers: ["", "", "", ""],
+      optionColors: ["", "", "", ""]
     }],
-    optionColors: ["", "", "", ""],
     currentQuestionNumber: 0,
     currentQuestionAnswered: false,
     numCorrect: 0
@@ -28,9 +28,6 @@ export default class QuizStats extends Component {
       const currentQuestion = this.state.questionList[this.state.currentQuestionNumber]
       const userSelectionIndex = currentQuestion.allAnswers.indexOf(userSelection)
       const rightAnswerIndex = currentQuestion.allAnswers.indexOf(currentQuestion.rightAnswer)
-      console.log("user answer #", userSelectionIndex)
-      console.log("correct answer #", rightAnswerIndex)
-      let displayColors = ["", "", "", ""]
 
       if (userSelection === currentQuestion.rightAnswer) {
         this.setState((prevState) => {
@@ -39,12 +36,11 @@ export default class QuizStats extends Component {
           };
         });
       } else {
-        displayColors[userSelectionIndex] = "is-danger"
+        currentQuestion.optionColors[userSelectionIndex] = "is-danger"
       }
-      displayColors[rightAnswerIndex] = "is-success"
+      currentQuestion.optionColors[rightAnswerIndex] = "is-success"
       this.setState({
         currentQuestionAnswered: true,
-        optionColors: displayColors
       })
     }
   }
@@ -55,7 +51,6 @@ export default class QuizStats extends Component {
       return {
         currentQuestionNumber: prevState.currentQuestionNumber + 1,
         currentQuestionAnswered: false,
-        optionColors: ["","","",""]
       };
     });
   }
@@ -120,6 +115,7 @@ export default class QuizStats extends Component {
           }
           this.shuffleArray(someDefinitions)
           newQuestion.allAnswers = someDefinitions;
+          newQuestion.optionColors = ["", "", "", ""]
           newQuiz.push(newQuestion);
         }
         this.shuffleArray(newQuiz);

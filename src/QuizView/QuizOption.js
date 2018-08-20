@@ -5,8 +5,6 @@ import { Tile, Tag } from "bloomer"
 
 export default class QuizOption extends Component {
 
-
-
   render() {
     return (
       <Tile isChild>
