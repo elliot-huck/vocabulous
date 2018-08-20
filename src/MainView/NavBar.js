@@ -31,15 +31,15 @@ export default class NavBar extends Component {
         <TabList onClick={(evt) => { this.changeActiveTab(evt) }}>
 
           <Tab>
-            <Link to="/browse">Browse</Link>
+            <Link to="/browse">Browse New Words</Link>
           </Tab>
 
           <Tab>
-            <Link to="/list">List</Link>
+            <Link to="/list">My Word List</Link>
           </Tab>
 
           <Tab>
-            <Link to="/quiz">Quiz</Link>
+            <Link to="/quiz">Take A Quiz</Link>
           </Tab>
 
         </TabList>
