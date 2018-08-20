@@ -11,7 +11,7 @@ const ExternalApi = Object.create(null, {
       &
       excludePartOfSpeech=auxiliary-verb%2C%20family-name%2C%20given-name%2C%20idiom%2C%20noun-plural%2C%20noun-posessive%2C%20past-part
       iciple%2C%20proper-noun%2C%20proper-noun-plural%2C%20proper-noun-posessive%2C%20prefix%2C%20suffix%2C%20phrasal-verb
-      &maxCorpusCount=100&minDictionaryCount=10&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=4&api_key=${Api.key}`)
+      &maxCorpusCount=750&minDictionaryCount=10&maxDictionaryCount=-1&minLength=5&maxLength=-1&limit=4&api_key=${Api.key}`)
         .then(e => e.json())
     }
   },
