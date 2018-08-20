@@ -315,6 +315,34 @@
       "definition": "Incipient; beginning.",
       "sentence": "Because I spent a good two minutes weighing the pros and cons of each, I now realize that I was wholly taken advantage of by inceptive in the Christopher Nolan sense of the word marketing.",
       "id": 42
+    },
+    {
+      "word": "lineation",
+      "partOfSpeech": "noun",
+      "definition": "The act of marking or outlining with lines.",
+      "sentence": "Williams's lineation is called upon to play a fundamental role in the poem.",
+      "id": 43
+    },
+    {
+      "word": "mizzle",
+      "partOfSpeech": "verb-intransitive",
+      "definition": "To rain in fine, mistlike droplets; drizzle.",
+      "sentence": "I doubt the terms \"woodshore\" and \"mizzle\" pepper Young Adult fiction of the 21st century.",
+      "id": 44
+    },
+    {
+      "word": "sequent",
+      "partOfSpeech": "adjective",
+      "definition": "Following in order or time; subsequent.",
+      "sentence": "He therefore invented another logical calculus that he called sequent calculus (Sequenzenkalkul, literally “calculus of sequences”) and made it the central topic of his thesis.",
+      "id": 45
+    },
+    {
+      "word": "lenitive",
+      "partOfSpeech": "adjective",
+      "definition": "Capable of easing pain or discomfort.",
+      "sentence": "Antony as to Cæsar; the easy Claudius allowed himself to be governed by Agrippina; easy applied to Claudius is only a lenitive, the proper expression is weak.",
+      "id": 46
     }
   ],
   "quizzes": [
@@ -472,6 +500,11 @@
       "numQuestions": 5,
       "numCorrect": 5,
       "id": 31
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 32
     }
   ],
   "userWords": [
@@ -566,6 +599,36 @@
       "userId": 1,
       "wordId": 42,
       "id": 25
+    },
+    {
+      "userId": 3,
+      "wordId": 43,
+      "id": 26
+    },
+    {
+      "userId": 3,
+      "wordId": 44,
+      "id": 27
+    },
+    {
+      "userId": 3,
+      "wordId": 45,
+      "id": 28
+    },
+    {
+      "userId": 3,
+      "wordId": 28,
+      "id": 29
+    },
+    {
+      "userId": 3,
+      "wordId": 30,
+      "id": 30
+    },
+    {
+      "userId": 3,
+      "wordId": 46,
+      "id": 31
     }
   ],
   "userQuizzes": [
@@ -723,6 +786,11 @@
       "userId": 1,
       "quizId": 31,
       "id": 31
+    },
+    {
+      "userId": 3,
+      "quizId": 32,
+      "id": 32
     }
   ]
 }
