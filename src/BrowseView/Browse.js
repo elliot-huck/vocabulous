@@ -11,16 +11,16 @@ export default class Browse extends Component {
   state = {
     currentWordBatch: [
       {
-        word: "test"
+        word: ""
       },
       {
-        word: "example"
+        word: ""
       },
       {
-        word: "word"
+        word: ""
       },
       {
-        word: "owl"
+        word: ""
       }]
   }
 
@@ -34,6 +34,7 @@ export default class Browse extends Component {
       })
   }
 
+  // Gets detail info for the word clicked and then updates the word object at that index in state so the BrowsePane has props to render the BrowseCard correctly
   addDetails = (evt) => {
     const clickedWord = evt.target.textContent
     // define object
@@ -42,25 +43,25 @@ export default class Browse extends Component {
       word: clickedWord
     }
 
-    // Call external API for definitions
+    // Call external API for the word's definition
     ExternalApi.getWordDefinition(clickedWord)
       .then(defResponse => {
-
         const definitionDetail = defResponse[0].text;
         const partOfSpeechDetail = defResponse[0].partOfSpeech;
         detailedWord.partOfSpeech = partOfSpeechDetail
         detailedWord.definition = definitionDetail;
+
         // Call external API for the example sentence
         ExternalApi.getWordSentence(clickedWord)
           .then(sentResponse => {
             const sentenceDetail = sentResponse.examples[0];
             const theActualSentence = sentenceDetail.text;
             detailedWord.sentence = theActualSentence;
+
             // Set the state by replacing the clicked word's index with the new detail object
             this.setState((prevState) => {
               prevState.currentWordBatch[indexToReplace] = detailedWord;
               return { currentWordBatch: prevState.currentWordBatch }
-
             })
           })
       })
@@ -76,7 +77,7 @@ export default class Browse extends Component {
     return (
       <React.Fragment>
 
-        <Button onClick={() => { this.newWordBatch() }}>Get different words</Button>
+        <Button isColor="primary" onClick={() => { this.newWordBatch() }}>Get different words</Button>
         <BrowsePane
           wordBatch={this.state.currentWordBatch}
           showDetails={(evt) => { this.addDetails(evt) }}

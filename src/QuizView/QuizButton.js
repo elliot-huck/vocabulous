@@ -5,23 +5,13 @@ import { Button } from "bloomer"
 
 export default class QuizButton extends Component {
 
-
   render() {
-
-    if (this.props.questionFinished < this.props.lastQuestion - 1) {
-      return (
-        <Button
-          isColor="primary"
-          onClick={() => { this.props.continue() }}
-        >
-          Next Question
+    return (
+      <Button
+        isColor={this.props.buttonColor}
+        onClick={() => { this.props.buttonClick() }}>
+        {this.props.buttonText}
       </Button>
-      )
-    } else {
-      return (
-        <Button isColor="info"
-        onClick={() => {this.props.grade()}}>End Quiz</Button>
-      )
-    }
+    )
   }
 }
