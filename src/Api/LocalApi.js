@@ -2,6 +2,8 @@
 
 const LocalApi = Object.create(null, {
 
+// USER METHODS-------------------------------------------------------
+  // Registers a new user
   addUser: {
     value: (newUser) => {
       return fetch("http://localhost:5050/users", {
@@ -14,6 +16,7 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  // Searches the database for a given username to see if it is unique
   searchUsers: {
     value: (userInput) => {
       return fetch(`http://localhost:5050/users?userName=${userInput}`)
@@ -21,13 +24,9 @@ const LocalApi = Object.create(null, {
     }
   },
 
-  searchWords: {
-    value: (wordToSearch) => {
-      return fetch(`http://localhost:5050/words?word=${wordToSearch}`)
-        .then(e => e.json())
-    }
-  },
 
+// WORD METHODS------------------------------------------------------
+  // Saves a word from the browse pane to the local database
   saveWord: {
     value: (wordToSave) => {
       return fetch("http://localhost:5050/words", {
@@ -40,6 +39,15 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  // Searches the database for a given word to see if it already exists
+  searchWords: {
+    value: (wordToSearch) => {
+      return fetch(`http://localhost:5050/words?word=${wordToSearch}`)
+        .then(e => e.json())
+    }
+  },
+
+  // Gets a word from the database using its id
   getWordById: {
     value: (wordId) => {
       return fetch(`http://localhost:5050/words?id=${wordId}`)
@@ -47,6 +55,9 @@ const LocalApi = Object.create(null, {
     }
   },
 
+
+// WORD LIST METHODS--------------------------------------------------
+  // Retrieves all the words in a user's word list
   getUserWords: {
     value: (activeUser) => {
       return fetch(`http://localhost:5050/userWords?userId=${activeUser}&_expand=word`)
@@ -54,6 +65,7 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  // Adds a new word to a user's word list
   addUserWordConnection: {
     value: (newConnection) => {
       return fetch("http://localhost:5050/userWords", {
@@ -66,6 +78,7 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  // Checks a user's word list to see if it contains a given word
   getUserWordConnection: {
     value: (wordId, userId) => {
       return fetch(`http://localhost:5050/userWords?userId=${userId}&wordId=${wordId}`)
@@ -73,6 +86,7 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  // Removes a given word from a user's word list
   deleteUserWordConnection: {
     value: (connection) => {
       return fetch(`http://localhost:5050/userWords/${connection}`, {
@@ -82,13 +96,9 @@ const LocalApi = Object.create(null, {
     }
   },
 
-  getUserQuizConnections: {
-    value: (activeUser) => {
-      return fetch(`http://localhost:5050/userQuizzes?userId=${activeUser}&_expand=quiz`)
-        .then(e => e.json())
-    }
-  },
 
+// QUIZ METHODS-------------------------------------------------------
+  // Saves the results of a finished quiz
   saveQuizResults: {
     value: (newQuiz) => {
       return fetch("http://localhost:5050/quizzes", {
@@ -101,6 +111,7 @@ const LocalApi = Object.create(null, {
     }
   },
 
+  // Adds a saved quiz to the list of quizzes that a user has completed
   addUserQuizConnection: {
     value: (newConnection) => {
       return fetch("http://localhost:5050/userQuizzes", {
@@ -110,6 +121,14 @@ const LocalApi = Object.create(null, {
         },
         body: JSON.stringify(newConnection)
       }).then(e => e.json());
+    }
+  },
+
+  // Retrieves all of the saved quizzes a user has completed
+  getUserQuizConnections: {
+    value: (activeUser) => {
+      return fetch(`http://localhost:5050/userQuizzes?userId=${activeUser}&_expand=quiz`)
+        .then(e => e.json())
     }
   }
 
