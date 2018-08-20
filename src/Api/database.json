@@ -505,6 +505,11 @@
       "numQuestions": 5,
       "numCorrect": 5,
       "id": 32
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 33
     }
   ],
   "userWords": [
@@ -791,6 +796,11 @@
       "userId": 3,
       "quizId": 32,
       "id": 32
+    },
+    {
+      "userId": 3,
+      "quizId": 33,
+      "id": 33
     }
   ]
 }
