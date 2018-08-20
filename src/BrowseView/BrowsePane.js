@@ -1,3 +1,5 @@
+// This module renders the browse pane, which shows four random word cards that can be clicked to show each word's details
+
 import React, { Component } from 'react'
 import { Box, Button } from 'bloomer';
 import LocalApi from "../Api/LocalApi"
@@ -6,7 +8,6 @@ import BrowseCard from './BrowseCard';
 export default class BrowsePane extends Component {
 
   addWordToList = (evt, wordToAdd) => {
-    console.log(evt.target)
     const button = evt.target;
     const currentUser = parseInt(sessionStorage.getItem("activeUserId"), 10);
     const wordToSearch = wordToAdd.word;
@@ -15,7 +16,7 @@ export default class BrowsePane extends Component {
     LocalApi.searchWords(wordToSearch)
       .then(matchingWords => {
 
-        if (matchingWords.length === 0) { //The word is not in the local api
+        if (matchingWords.length === 0) { // The word is not in the local api
           // Adds the word to the local database
           LocalApi.saveWord(wordToAdd)
             .then(response => {
@@ -26,6 +27,7 @@ export default class BrowsePane extends Component {
               }
               // Adds the word from local database to the user's list
               LocalApi.addUserWordConnection(newUserWordConnection)
+              // Changes the color and text of the button
               button.classList += " is-info"
               button.textContent = "Added!"
             })
@@ -41,7 +43,9 @@ export default class BrowsePane extends Component {
                   userId: currentUser,
                   wordId: wordId
                 }
+                // Adds the word from local database to the user's list
                 LocalApi.addUserWordConnection(newUserWordConnection)
+                // Changes the color and text of the button
                 button.classList += " is-info"
                 button.textContent = "Added!"
 
@@ -74,7 +78,6 @@ export default class BrowsePane extends Component {
               button={addButton} />
           )
         })}
-
       </Box>
     )
   }

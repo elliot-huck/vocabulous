@@ -1,9 +1,10 @@
-
+// This module exports an object that holds all the methods used to query the external Wordnik API
 
 import Api from "./ApiKey"
 
 const ExternalApi = Object.create(null, {
 
+  // Returns a selection of random words
   getMoreWords: {
     value: () => {
       return fetch(`https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true
@@ -16,6 +17,7 @@ const ExternalApi = Object.create(null, {
     }
   },
 
+  // Gets the first definition of a selected word
   getWordDefinition: {
     value: (word) => {
       return fetch(`https://api.wordnik.com/v4/word.json/${word}/definitions?limit=1&includeRelated=false&sourceDictionaries=all&useCanonical=false&includeTags=false&api_key=${Api.key}`)
@@ -23,6 +25,7 @@ const ExternalApi = Object.create(null, {
     }
   },
 
+  // Gets the first example sentence of a selected word
   getWordSentence: {
     value: (word) => {
       return fetch(`https://api.wordnik.com/v4/word.json/${word}/examples?includeDuplicates=false&useCanonical=false&limit=1&api_key=${Api.key}`)

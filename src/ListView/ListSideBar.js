@@ -10,22 +10,18 @@ export default class ListSideBar extends Component {
     if (this.props.detailId === "") {
       return (
         <Column>
-
           <Box>
             <h1>(click a word to see its details here)</h1>
           </Box>
-
         </Column>
 
       )
     } else {
       return (
         <Column>
-
           <Box>
             <DetailCard wordId={this.props.detailId} />
           </Box>
-
         </Column>
       )
     }

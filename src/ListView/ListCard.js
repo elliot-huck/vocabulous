@@ -21,6 +21,7 @@ export default class ListCard extends Component {
         const connectionToDelete = response[0].id;
         return LocalApi.deleteUserWordConnection(connectionToDelete)
       }).then(wordDeleted => {
+        // Reloads the user's word list and clears sidebar details
         this.props.reloadWords()
         this.props.showDetails("")
       })
@@ -35,6 +36,7 @@ export default class ListCard extends Component {
             {this.props.wordObject.word}
           </Title>
         </Column>
+        
         <Column>
           <a onClick={(evt) => this.deleteWord(evt)}>
             remove

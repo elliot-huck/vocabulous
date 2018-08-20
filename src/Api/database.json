@@ -510,6 +510,41 @@
       "numQuestions": 5,
       "numCorrect": 5,
       "id": 33
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 2,
+      "id": 34
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 3,
+      "id": 35
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 5,
+      "id": 36
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 0,
+      "id": 37
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 2,
+      "id": 38
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 3,
+      "id": 39
+    },
+    {
+      "numQuestions": 5,
+      "numCorrect": 2,
+      "id": 40
     }
   ],
   "userWords": [
@@ -801,6 +836,41 @@
       "userId": 3,
       "quizId": 33,
       "id": 33
+    },
+    {
+      "userId": 3,
+      "quizId": 34,
+      "id": 34
+    },
+    {
+      "userId": 3,
+      "quizId": 35,
+      "id": 35
+    },
+    {
+      "userId": 3,
+      "quizId": 36,
+      "id": 36
+    },
+    {
+      "userId": 3,
+      "quizId": 37,
+      "id": 37
+    },
+    {
+      "userId": 3,
+      "quizId": 38,
+      "id": 38
+    },
+    {
+      "userId": 3,
+      "quizId": 39,
+      "id": 39
+    },
+    {
+      "userId": 3,
+      "quizId": 40,
+      "id": 40
     }
   ]
 }

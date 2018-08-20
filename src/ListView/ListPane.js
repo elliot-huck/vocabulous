@@ -1,4 +1,4 @@
-// This module renders the list pane which will show all the user's words in a list
+// This module renders the list pane, which will show all the user's words in a list
 
 import React, { Component } from 'react';
 import { Box, Column } from 'bloomer';
@@ -25,7 +25,6 @@ export default class ListPane extends Component {
   componentDidMount() {
     this.updateList();
   }
-
 
   render() {
     return (
