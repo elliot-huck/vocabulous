@@ -1,6 +1,6 @@
 
 # Vocabulous
-Vocabulous is a vocabulary-building app where users can view random words, save interesting words to a personal word list, and take quizzes on the words that are saved in that list.
+Vocabulous is a vocabulary-building app that allows a user to view random dictionary words and their definitions, save them to a personal word list, and then take quizzes on those words to build vocabulary knowledge. Built using React, JSON Server, Bloomer, and the Wordnik API. 
 
 ## Technologies used:
 - [React](https://reactjs.org/docs/getting-started.html)
